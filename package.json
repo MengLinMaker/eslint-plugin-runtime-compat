@@ -1,7 +1,7 @@
 {
-  "name": "@menglinmaker/npm-library-boilerplate",
+  "name": "@menglinmaker/eslint-runtime-compat",
   "version": "0.0.0",
-  "description": "Boilerplate for creating NPM library with CJS, ESM and DTS output",
+  "description": "Eslint check JS runtime conpatability issues. Inspired by eslint-plugin-compat and runtime-compat-data.",
   "exports": {
     ".": {
       "import": {
@@ -14,15 +14,22 @@
       }
     }
   },
-  "files": ["dist"],
-  "repository": "https://github.com/MengLinMaker/npm-library-boilerplate.git",
-  "keywords": ["boilerplate", "npm", "library"],
+  "files": [
+    "dist"
+  ],
+  "repository": "https://github.com/MengLinMaker/eslint-runtime-compat.git",
+  "keywords": [
+    "eslint",
+    "runtime",
+    "compat",
+    "linting"
+  ],
   "author": "Meng Lin <menglinmaker@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MengLinMaker/npm-library-boilerplate/issues"
+    "url": "https://github.com/MengLinMaker/eslint-runtime-compat/issues"
   },
-  "homepage": "https://github.com/MengLinMaker/npm-library-boilerplate#readme",
+  "homepage": "https://github.com/MengLinMaker/eslint-runtime-compat#readme",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -49,5 +56,7 @@
     "pre-commit": "pnpm run format",
     "pre-push": "pnpm run lint"
   },
-  "browserslist": ["defaults"]
+  "browserslist": [
+    "defaults"
+  ]
 }

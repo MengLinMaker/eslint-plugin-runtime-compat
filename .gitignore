@@ -1,0 +1,20 @@
+# Test
+coverage
+
+# Build
+dist
+tsconfig.tsbuildinfo
+
+# Docs
+docs/.vitepress/dist
+docs/.vitepress/cache
+
+# Dependency
+node_modules
+
+# Environment
+.env
+
+# System
+.DS_Store
+.vscode

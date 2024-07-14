@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    /* Strictest Check */
+    "strict": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    /* Check Config */
+    "checkJs": true,
+    "skipLibCheck": true,
+    "pretty": true,
+    /* Module Config */
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"
+  },
+  "include": ["src"]
+}

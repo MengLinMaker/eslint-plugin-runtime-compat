@@ -1,4 +1,4 @@
-import { objectKeys } from './../../src/utils/objectKeys';
+import { objectKeys } from './../../src/utils/objectKeys'
 
 import { describe, expect, expectTypeOf, it } from 'vitest'
 
@@ -7,11 +7,11 @@ describe('objectKey', () => {
     const keys = objectKeys({
       a: null,
       'b ': 'b ',
-      c: () => { },
+      c: () => {},
       d: { d: null },
     })
     const expectedKeys = ['a', 'b ', 'c', 'd']
-    type expectedKeyType = "a" | "b " | "c" | "d"
+    type expectedKeyType = 'a' | 'b ' | 'c' | 'd'
     expect(keys).toEqual(expectedKeys)
     expectTypeOf(keys).toMatchTypeOf<expectedKeyType[]>()
   })

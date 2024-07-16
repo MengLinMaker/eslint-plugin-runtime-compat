@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { mapCompatData } from '../../src/utils'
+import { mapCompatData } from '../../src/utils/mapCompatData'
 import sampleRuntimeCompatData from '../sample-runtime-compat-data.json'
 import parsedRuntimeCompatData from './parsed-runtime-compat-data.json'
 

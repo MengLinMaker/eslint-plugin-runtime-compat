@@ -21,3 +21,7 @@ export type RawCompatData = {
     [key: string]: RawCompatDataSupport | RawCompatDataSupport[]
   }
 }
+
+export type RawCompatDataMap = {
+  [key: string]: RawCompatData
+}

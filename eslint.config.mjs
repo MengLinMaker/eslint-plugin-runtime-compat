@@ -1,5 +1,4 @@
 import pluginJs from '@eslint/js'
-import compat from 'eslint-plugin-compat'
 import tseslint from 'typescript-eslint'
 
 export default [
@@ -8,5 +7,4 @@ export default [
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.strict,
-  compat.configs['flat/recommended'],
 ]

@@ -1,4 +1,4 @@
-import type { RawCompatData } from '../types/rawCompatData'
+import type { RawCompatData } from '../types'
 import { objectKeys } from './objectKeys'
 
 // Catch compile errors with constant.

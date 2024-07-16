@@ -1,4 +1,4 @@
-import { objectKeys } from './../../src/utils/objectKeys'
+import { objectKeys } from './../../src/utils'
 
 import { describe, expect, expectTypeOf, it } from 'vitest'
 

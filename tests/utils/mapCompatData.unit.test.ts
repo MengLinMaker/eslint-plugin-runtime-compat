@@ -4,7 +4,7 @@ import sampleRuntimeCompatData from '../sample-runtime-compat-data.json'
 import parsedRuntimeCompatData from './parsed-runtime-compat-data.json'
 
 describe('mapCompatData', () => {
-  it('Parse raw compat-data to "__compat" flat object', () => {
+  it('should parse raw compat-data to "__compat" flat object', () => {
     const parsedCompatData = mapCompatData(sampleRuntimeCompatData)
     expect(parsedCompatData).toEqual(parsedRuntimeCompatData)
   })

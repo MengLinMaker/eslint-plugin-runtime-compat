@@ -3,7 +3,7 @@ import { objectKeys } from './../../src/utils/objectKeys'
 import { describe, expect, expectTypeOf, it } from 'vitest'
 
 describe('objectKey', () => {
-  it('Return keys of object with correct types', () => {
+  it('should return keys of object with correct types', () => {
     const keys = objectKeys({
       a: null,
       'b ': 'b ',

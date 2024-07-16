@@ -7,7 +7,7 @@ import { objectKeys } from './objectKeys'
  * Clean flat compat data object, retaining only unsupported runtimes.
  * @param flatCompatData - Flat compat data object.
  * @param filterRuntimes - Runtimes to filter for lack of support detection.
- * @returns Array of unsupported runtimes.
+ * @returns Parsed unsupported runtime data.
  */
 export const filterSupportCompatData = (
   flatCompatData: RawCompatDataMap,

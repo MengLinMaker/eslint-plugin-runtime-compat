@@ -7,7 +7,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "style": {
+        "useNodejsImportProtocol": "off"
+      }
     }
   },
   "javascript": {
@@ -18,6 +21,7 @@
   },
   "files": {
     "ignore": ["coverage", "dist", "node_modules"],
-    "ignoreUnknown": true
+    "ignoreUnknown": true,
+    "maxSize": 50000000
   }
 }

@@ -24,7 +24,11 @@ export const filterSupportCompatData = (
     )
     if (unsupportedRuntimes.length > 0) {
       let url = rawCompatDatum.mdn_url
-      if (url === undefined) url = rawCompatDatum.spec_url
+      if (url === undefined) {
+        if (Array.isArray(rawCompatDatum.spec_url))
+          url = rawCompatDatum.spec_url[0]
+        else url = rawCompatDatum.spec_url
+      }
       parsedCompatData[apiKeys] = {
         url,
         status: rawCompatDatum.status,

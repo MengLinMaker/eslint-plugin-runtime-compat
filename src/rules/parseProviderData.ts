@@ -27,6 +27,5 @@ export const parseProviderData = (
   }
 
   const parsedData = filterSupportCompatData(compatDataMap, filterRuntimes)
-  console.log(Object.keys(compatDataMap).length, Object.keys(parsedData).length)
   return parsedData
 }

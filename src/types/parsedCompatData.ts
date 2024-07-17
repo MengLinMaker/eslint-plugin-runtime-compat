@@ -4,10 +4,12 @@ export type Runtime = (typeof supportedRuntimes)[number]
 
 export type ParsedCompatData = {
   url: string | undefined
-  status: {
-    deprecated: boolean
-    experimental: boolean
-    standard_track: boolean
-  }
+  status:
+    | {
+        deprecated: boolean
+        experimental: boolean
+        standard_track: boolean
+      }
+    | undefined
   unsupported: Runtime[]
 }

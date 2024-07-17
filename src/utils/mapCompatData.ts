@@ -1,4 +1,4 @@
-import type { RawCompatData } from '../types/rawCompatData'
+import type { CompatStatement } from 'runtime-compat-data'
 import { objectKeys } from './objectKeys'
 
 // Catch compile errors with constant.
@@ -11,7 +11,7 @@ const __compat = '__compat' as never
  */
 export const mapCompatData = (compatData: object) => {
   const parsedCompatData: {
-    [key: string]: RawCompatData
+    [key: string]: CompatStatement
   } = {}
 
   const dfsParse = (compatData: object, parentKeys: never[] = []) => {

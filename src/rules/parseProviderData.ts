@@ -1,6 +1,6 @@
 import bcd from '@mdn/browser-compat-data'
 import data from 'runtime-compat-data'
-import type { Runtime } from '../types/parsedCompatData'
+import type { RuntimeName } from 'runtime-compat-data'
 import { filterSupportCompatData } from '../utils/filterSupportCompatData'
 import { mapCompatData } from '../utils/mapCompatData'
 
@@ -10,7 +10,7 @@ import { mapCompatData } from '../utils/mapCompatData'
  * @returns Complete parsed unsupported runtime data from multiple sources.
  */
 export const parseProviderData = (
-  filterRuntimes: Runtime[],
+  filterRuntimes: RuntimeName[],
   noBrowserApi = false,
 ) => {
   let compatDataMap = mapCompatData({

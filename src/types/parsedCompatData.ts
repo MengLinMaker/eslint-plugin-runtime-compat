@@ -1,6 +1,4 @@
-import type { supportedRuntimes } from '../constants'
-
-export type Runtime = (typeof supportedRuntimes)[number]
+import type { RuntimeName } from 'runtime-compat-data'
 
 export type ParsedCompatData = {
   url: string | undefined
@@ -11,5 +9,5 @@ export type ParsedCompatData = {
         standard_track: boolean
       }
     | undefined
-  unsupported: Runtime[]
+  unsupported: RuntimeName[]
 }

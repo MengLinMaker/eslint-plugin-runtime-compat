@@ -1,9 +1,9 @@
+import type { RuntimeName } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import type { Runtime } from '../../src/types/parsedCompatData'
 import { getUnsupportedRuntimes } from '../../src/utils/getUnsupportedRuntimes'
 
 describe('getUnsupportedRuntimes', () => {
-  const filterRuntimes: Runtime[] = ['node']
+  const filterRuntimes: RuntimeName[] = ['node']
   const sampleStatus = {
     deprecated: false,
     standard_track: true,

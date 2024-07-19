@@ -1,5 +1,4 @@
-import type { CompatStatement } from 'runtime-compat-data'
-import type { Runtime } from '../types/parsedCompatData'
+import type { CompatStatement, RuntimeName } from 'runtime-compat-data'
 
 /**
  * Extract unsupported runtimes based of filter.
@@ -9,9 +8,9 @@ import type { Runtime } from '../types/parsedCompatData'
  */
 export const getUnsupportedRuntimes = (
   rawCompatDatum: CompatStatement,
-  filterRuntimes: Runtime[],
+  filterRuntimes: RuntimeName[],
 ) => {
-  const unsupportedRuntimes: Runtime[] = []
+  const unsupportedRuntimes: RuntimeName[] = []
 
   for (const filterRuntime of filterRuntimes) {
     const support = rawCompatDatum.support[filterRuntime]

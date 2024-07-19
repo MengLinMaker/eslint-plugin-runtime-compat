@@ -1,13 +1,11 @@
+import type { RuntimeName } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import type {
-  ParsedCompatData,
-  Runtime,
-} from '../../src/types/parsedCompatData'
+import type { ParsedCompatData } from '../../src/types/parsedCompatData'
 import type { RawCompatDataMap } from '../../src/types/rawCompatData'
 import { filterSupportCompatData } from '../../src/utils/filterSupportCompatData'
 
 describe('filterSupportCompatData', () => {
-  const filterRuntimes: Runtime[] = ['node']
+  const filterRuntimes: RuntimeName[] = ['node']
   const sampleStatus = {
     deprecated: false,
     standard_track: true,

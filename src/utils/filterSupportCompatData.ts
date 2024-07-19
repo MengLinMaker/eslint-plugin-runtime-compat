@@ -1,4 +1,5 @@
-import type { ParsedCompatData, Runtime } from '../types/parsedCompatData'
+import type { RuntimeName } from 'runtime-compat-data'
+import type { ParsedCompatData } from '../types/parsedCompatData'
 import type { RawCompatDataMap } from './../types/rawCompatData'
 import { getUnsupportedRuntimes } from './getUnsupportedRuntimes'
 import { objectKeys } from './objectKeys'
@@ -11,7 +12,7 @@ import { objectKeys } from './objectKeys'
  */
 export const filterSupportCompatData = (
   flatCompatData: RawCompatDataMap,
-  filterRuntimes: Runtime[],
+  filterRuntimes: RuntimeName[],
 ) => {
   const parsedCompatData: Record<string, ParsedCompatData> = {}
   for (const apiKeys of objectKeys(flatCompatData)) {

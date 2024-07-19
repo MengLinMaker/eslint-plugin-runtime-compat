@@ -51,7 +51,7 @@
     "runtime-compat-data": "^0.0.5"
   },
   "peerDependencies": {
-    "eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0"
+    "eslint": ">=9.0.0"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm run format",

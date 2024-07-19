@@ -1,5 +1,10 @@
 import type { CompatStatement, RuntimeName } from 'runtime-compat-data'
 
+export type RuleConfig = {
+  deprecated: boolean
+  experimental: boolean
+}
+
 export type RawCompatDataMap = {
   [key: string]: CompatStatement
 }

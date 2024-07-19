@@ -11,25 +11,34 @@ const cacheErrorMsg =
   'Cache - Unsupported API in node. Docs: https://developer.mozilla.org/docs/Web/API/Cache'
 
 it('should pass eslint "runtime-compat" test', () => {
-  ruleTester.run('runtime-compat', runtimeCompatRule(filterRuntimes), {
-    valid: [{ code: 'fetch("https://www.google.com")' }],
-    invalid: [
-      {
-        code: 'const a = new Cache(); let b = new Cache(); b = new Cache()',
-        errors: [
-          { message: cacheErrorMsg },
-          { message: cacheErrorMsg },
-          { message: cacheErrorMsg },
-        ],
-      },
-      {
-        code: 'const n = Cache; let b = new Cache; b = new Cache',
-        errors: [
-          { message: cacheErrorMsg },
-          { message: cacheErrorMsg },
-          { message: cacheErrorMsg },
-        ],
-      },
-    ],
-  })
+  ruleTester.run(
+    'runtime-compat',
+    runtimeCompatRule(filterRuntimes, {
+      deprecated: false,
+      experimental: false,
+    }),
+    {
+      valid: [{ code: 'fetch("https://www.google.com")' }],
+      invalid: [
+        {
+          // Detect unsupported API constructor call.
+          code: 'const a = new Cache(); let b = new Cache(); b = new Cache()',
+          errors: [
+            { message: cacheErrorMsg },
+            { message: cacheErrorMsg },
+            { message: cacheErrorMsg },
+          ],
+        },
+        {
+          // Detect unsupported API variable assignment.
+          code: 'const n = Cache; let b = new Cache; b = new Cache',
+          errors: [
+            { message: cacheErrorMsg },
+            { message: cacheErrorMsg },
+            { message: cacheErrorMsg },
+          ],
+        },
+      ],
+    },
+  )
 })

@@ -2,6 +2,7 @@ import type { Rule } from 'eslint'
 import type { Identifier } from 'estree'
 import type { RuntimeName } from 'runtime-compat-data'
 import data from 'runtime-compat-data'
+import type { RuleConfig } from '../types'
 import { filterSupportCompatData } from '../utils/filterSupportCompatData'
 import { mapCompatData } from '../utils/mapCompatData'
 
@@ -10,7 +11,10 @@ import { mapCompatData } from '../utils/mapCompatData'
  * @param filterRuntimes - List of runtimes to check.
  * @returns ESLint rule.
  */
-export const runtimeCompatRule = (filterRuntimes: RuntimeName[]): Rule.RuleModule => ({
+export const runtimeCompatRule = (
+  filterRuntimes: RuntimeName[],
+  ruleConfig: RuleConfig,
+): Rule.RuleModule => ({
   meta: {
     docs: {
       description: 'Ensure cross-runtime API compatibility',
@@ -21,7 +25,7 @@ export const runtimeCompatRule = (filterRuntimes: RuntimeName[]): Rule.RuleModul
     schema: [{ type: 'string' }],
   },
   create: (context) => {
-    const unsupportedApis = filterSupportCompatData(mapCompatData(data), filterRuntimes)
+    const unsupportedApis = filterSupportCompatData(mapCompatData(data), filterRuntimes, ruleConfig)
     const reportError = (node: Identifier, unsupportesApiId: string) => {
       const apiInfo = unsupportedApis[unsupportesApiId]
       if (apiInfo) {

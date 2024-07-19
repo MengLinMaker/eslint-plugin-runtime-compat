@@ -1,46 +1,20 @@
-/**
- * Step 1) Entry point of plugin. Exports itself for eslint to use
- * @author Meng Lin
- */
-
-import type { Linter } from 'eslint'
+export type { RuntimeName } from 'runtime-compat-data'
+import type { RuntimeName } from 'runtime-compat-data'
 import pkg from '../package.json'
-//------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
-import recommended from './config/recommended'
+import { runtimeCompatRule } from './rules/runtime-compat'
 
-//------------------------------------------------------------------------------
-// Plugin Definition
-//------------------------------------------------------------------------------
-
-// import all rules in lib/rules
-import compat from './rules/compat'
-
-const plugin = {
+/**
+ * Function to initialise plugin
+ * @param filterRuntimes - List of runtimes to check.
+ * @returns Plugin
+ */
+export const eslintRuntimeCompat = (filterRuntimes: RuntimeName[]) => ({
   meta: {
+    // Metadata for debugging.
     name: pkg.name,
     version: pkg.version,
   },
-  configs: {},
   rules: {
-    compat,
+    'runtime-compat': runtimeCompatRule(filterRuntimes),
   },
-}
-
-const configs = {
-  'flat/recommended': {
-    plugins: { compat: plugin },
-    ...recommended.flat,
-  } as Linter.FlatConfig,
-  recommended: {
-    plugins: ['compat'],
-    ...recommended.legacy,
-  } as Linter.Config,
-}
-plugin.configs = configs
-
-export = {
-  ...(plugin as typeof plugin & { configs: typeof configs }),
-  config: configs,
-}
+})

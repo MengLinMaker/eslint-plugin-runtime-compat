@@ -1,15 +1,10 @@
 export type { RuntimeName } from 'runtime-compat-data'
+import type { Linter } from 'eslint'
 import type { RuntimeName } from 'runtime-compat-data'
 import pkg from '../package.json'
 import { supportedRuntimes } from './constants'
 import { runtimeCompatRule } from './rules/runtime-compat'
 import type { RuleConfig } from './types'
-
-const meta = {
-  // Metadata for debugging.
-  name: pkg.name,
-  version: pkg.version,
-}
 
 const defaultRuleConfig: RuleConfig = {
   deprecated: true,
@@ -17,26 +12,36 @@ const defaultRuleConfig: RuleConfig = {
 }
 
 /**
- * Function to initialise plugin.
- * @param filterRuntimes - List of runtimes to check.
- * @returns Plugin.
+ * Generate flatconfig for ESLint.
+ * @param filterRuntimes
+ * @param ruleConfig - List of runtimes to check.
+ * @returns Generated flat-config for ESLint.
  */
-export const eslintRuntimeCompat = (
+const runtimeCompatPlugin = (
   filterRuntimes: RuntimeName[],
   ruleConfig: RuleConfig = defaultRuleConfig,
-) => ({
-  meta,
+): Linter.FlatConfig => ({
+  plugins: {
+    'runtime-compat': {
+      meta: {
+        name: pkg.name,
+        version: pkg.version,
+      },
+      rules: {
+        'runtime-compat': runtimeCompatRule(filterRuntimes, ruleConfig),
+      },
+    },
+  },
   rules: {
-    'runtime-compat': runtimeCompatRule(filterRuntimes, ruleConfig),
+    'runtime-compat/runtime-compat': 'error',
   },
 })
 
-/**
- * Default config checks compatability for all runtimes.
- */
-export default {
-  meta,
-  rules: {
-    'runtime-compat': runtimeCompatRule(supportedRuntimes, defaultRuleConfig),
-  },
+export const configs = {
+  recommended: runtimeCompatPlugin(supportedRuntimes, {
+    deprecated: false,
+    experimental: false,
+  }),
+  strict: runtimeCompatPlugin(supportedRuntimes),
+  custom: runtimeCompatPlugin,
 }

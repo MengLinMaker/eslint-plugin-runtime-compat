@@ -3,6 +3,7 @@ import type { Identifier } from 'estree'
 import type { RuntimeName } from 'runtime-compat-data'
 import data from 'runtime-compat-data'
 import type { RuleConfig } from '../types'
+import { compatErrorMessage } from '../utils/compatErrorMessage'
 import { filterSupportCompatData } from '../utils/filterSupportCompatData'
 import { mapCompatData } from '../utils/mapCompatData'
 
@@ -18,24 +19,17 @@ export const runtimeCompatRule = (
   meta: {
     docs: {
       description: 'Ensure cross-runtime API compatibility',
-      category: 'Compatibility',
-      recommended: true,
     },
     type: 'problem',
-    schema: [{ type: 'string' }],
   },
   create: (context) => {
     const unsupportedApis = filterSupportCompatData(mapCompatData(data), filterRuntimes, ruleConfig)
+
     const reportError = (node: Identifier, unsupportesApiId: string) => {
       const apiInfo = unsupportedApis[unsupportesApiId]
-      if (apiInfo) {
-        const unsupportedRuntimeString = apiInfo.unsupported.join(', ')
-        const apiName: string[] = JSON.parse(unsupportesApiId)
-        context.report({
-          node,
-          message: `${apiName.join('.')} - Unsupported API in ${unsupportedRuntimeString}. Docs: ${apiInfo.url}`,
-        })
-      }
+      if (!apiInfo) return
+      const message = compatErrorMessage(unsupportesApiId, apiInfo)
+      context.report({ node, message })
     }
 
     return {

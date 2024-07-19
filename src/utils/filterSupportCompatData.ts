@@ -1,6 +1,5 @@
 import type { RuntimeName } from 'runtime-compat-data'
-import type { ParsedCompatData } from '../types/parsedCompatData'
-import type { RawCompatDataMap } from './../types/rawCompatData'
+import type { ParsedCompatData, RawCompatDataMap } from '../types'
 import { getUnsupportedRuntimes } from './getUnsupportedRuntimes'
 import { objectKeys } from './objectKeys'
 

@@ -1,4 +1,8 @@
-import type { RuntimeName } from 'runtime-compat-data'
+import type { CompatStatement, RuntimeName } from 'runtime-compat-data'
+
+export type RawCompatDataMap = {
+  [key: string]: CompatStatement
+}
 
 export type ParsedCompatData = {
   url: string | undefined

@@ -8,7 +8,7 @@ const ruleTester = new RuleTester({
 })
 const filterRuntimes: RuntimeName[] = ['node']
 const cacheErrorMsg =
-  'Cache - Unsupported API in node. Docs: https://developer.mozilla.org/docs/Web/API/Cache'
+  "'Cache' - Unsupported API in node.\nDocs - https://developer.mozilla.org/docs/Web/API/Cache"
 
 it('should pass eslint "runtime-compat" test', () => {
   ruleTester.run(

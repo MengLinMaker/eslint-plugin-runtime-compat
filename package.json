@@ -1,5 +1,5 @@
 {
-  "name": "@menglinmaker/eslint-runtime-compat",
+  "name": "@menglinmaker/eslint-plugin-runtime-compat",
   "version": "0.0.0",
   "description": "Eslint check JS runtime conpatability issues. Inspired by eslint-plugin-compat and runtime-compat-data.",
   "exports": {
@@ -15,14 +15,14 @@
     }
   },
   "files": ["dist"],
-  "repository": "https://github.com/MengLinMaker/eslint-runtime-compat.git",
+  "repository": "https://github.com/MengLinMaker/eslint-plugin-runtime-compat.git",
   "keywords": ["eslint", "runtime", "compat", "linting"],
   "author": "Meng Lin <menglinmaker@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MengLinMaker/eslint-runtime-compat/issues"
+    "url": "https://github.com/MengLinMaker/eslint-plugin-runtime-compat/issues"
   },
-  "homepage": "https://github.com/MengLinMaker/eslint-runtime-compat#readme",
+  "homepage": "https://github.com/MengLinMaker/eslint-plugin-runtime-compat#readme",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",

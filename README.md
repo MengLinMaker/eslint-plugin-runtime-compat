@@ -1,6 +1,4 @@
-# eslint-plugin-runtime-compat
-
-Lint JavaScript runtime compatability issues during development.
+<h1 align="center">eslint-plugin-runtime-compat</h1>
 
 <div flex align="center">
 <img alt="GitHub" src="https://img.shields.io/github/license/menglinmaker/eslint-plugin-runtime-compat">
@@ -8,6 +6,8 @@ Lint JavaScript runtime compatability issues during development.
 <a href="https://badge.fury.io/js/@menglinmaker%2Feslint-plugin-runtime-compat"><img src="https://badge.fury.io/js/@menglinmaker%2Feslint-plugin-runtime-compat.svg" alt="npm version"></a>
 <a href="https://npm-stat.com/charts.html?package=eslint-plugin-runtime-compat"><img src="https://img.shields.io/npm/dm/eslint-plugin-runtime-compat.svg" alt="npm version"></a>
 </div>
+
+<h4 align="center">Lint JavaScript runtime compatability issues during development.</h4>
 
 &nbsp;
 

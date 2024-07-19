@@ -6,7 +6,7 @@ export default defineConfig({
     coverage: {
       enabled: true,
       include: ['src'],
-      exclude: ['**/index.ts'],
+      exclude: ['**/index.ts', 'src/constants.ts'],
     },
     // Faster than 'fork' pool at the cost of less isolation.
     pool: 'threads',

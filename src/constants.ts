@@ -1,4 +1,6 @@
-export const supportedRuntimes = Object.freeze([
+import type { RuntimeName } from 'runtime-compat-data'
+
+export const supportedRuntimes: RuntimeName[] = [
   'bun',
   'deno',
   'edge-light',
@@ -6,4 +8,4 @@ export const supportedRuntimes = Object.freeze([
   'netlify',
   'node',
   'workerd',
-] as const)
+]

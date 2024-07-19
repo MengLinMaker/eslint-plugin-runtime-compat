@@ -23,29 +23,36 @@ export const runtimeCompatRule = (
     schema: [{ type: 'string' }],
   },
   create: (context) => {
-    const compatDataMap = mapCompatData(data)
     const unsupportedApis = filterSupportCompatData(
-      compatDataMap,
+      mapCompatData(data),
       filterRuntimes,
     )
-
     const reportError = (node: Identifier, unsupportesApiId: string) => {
       const apiInfo = unsupportedApis[unsupportesApiId]
       if (apiInfo) {
         const unsupportedRuntimeString = apiInfo.unsupported.join(', ')
+        const apiName: string[] = JSON.parse(unsupportesApiId)
         context.report({
           node,
-          message: `${node.name} - Unsupported API in ${unsupportedRuntimeString}. Docs: ${apiInfo.url}`,
+          message: `${apiName.join('.')} - Unsupported API in ${unsupportedRuntimeString}. Docs: ${apiInfo.url}`,
         })
       }
     }
 
     return {
       Identifier: (identifierNode) => {
-        // Detect a class
+        // Detect a class constructor
         if (identifierNode.parent.type === 'NewExpression') {
           const unsupportesApiId = JSON.stringify([identifierNode.name])
           reportError(identifierNode, unsupportesApiId)
+        }
+        // Detect variable assignment from class
+        if (identifierNode.parent.type === 'VariableDeclarator') {
+          if (identifierNode.parent.init === identifierNode) {
+            console.log(identifierNode.name)
+            const unsupportesApiId = JSON.stringify([identifierNode.name])
+            reportError(identifierNode, unsupportesApiId)
+          }
         }
       },
     }

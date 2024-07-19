@@ -7,6 +7,8 @@ const ruleTester = new RuleTester({
   languageOptions: { ecmaVersion: 2015, sourceType: 'module' },
 })
 const filterRuntimes: RuntimeName[] = ['node']
+const cacheErrorMsg =
+  'Cache - Unsupported API in node. Docs: https://developer.mozilla.org/docs/Web/API/Cache'
 
 it('should pass eslint "runtime-compat" test', () => {
   ruleTester.run('runtime-compat', runtimeCompatRule(filterRuntimes), {
@@ -17,11 +19,31 @@ it('should pass eslint "runtime-compat" test', () => {
     ],
     invalid: [
       {
-        code: 'const caches = new Cache()',
+        // Detect
+        code: 'const a = new Cache(); let b = new Cache(); b = new Cache()',
         errors: [
           {
-            message:
-              'Cache - Unsupported API in node. Docs: https://developer.mozilla.org/docs/Web/API/Cache',
+            message: cacheErrorMsg,
+          },
+          {
+            message: cacheErrorMsg,
+          },
+          {
+            message: cacheErrorMsg,
+          },
+        ],
+      },
+      {
+        code: 'const n = Cache; let b = new Cache; b = new Cache',
+        errors: [
+          {
+            message: cacheErrorMsg,
+          },
+          {
+            message: cacheErrorMsg,
+          },
+          {
+            message: cacheErrorMsg,
           },
         ],
       },

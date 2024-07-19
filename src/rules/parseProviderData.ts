@@ -6,7 +6,7 @@ import { mapCompatData } from '../utils/mapCompatData'
 
 /**
  * Extract only relevant unsupported runtime data from sources.
- * @param filterRuntimes - Runtimes to filter for lack of support detection.
+ * @param filterRuntimes - List of runtimes to check.
  * @returns Complete parsed unsupported runtime data from multiple sources.
  */
 export const parseProviderData = (

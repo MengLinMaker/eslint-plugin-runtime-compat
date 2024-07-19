@@ -4,9 +4,9 @@ import pkg from '../package.json'
 import { runtimeCompatRule } from './rules/runtime-compat'
 
 /**
- * Function to initialise plugin
+ * Function to initialise plugin.
  * @param filterRuntimes - List of runtimes to check.
- * @returns Plugin
+ * @returns Plugin.
  */
 export const eslintRuntimeCompat = (filterRuntimes: RuntimeName[]) => ({
   meta: {

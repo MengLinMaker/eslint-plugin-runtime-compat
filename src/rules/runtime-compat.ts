@@ -3,6 +3,11 @@ import type { Identifier } from 'estree'
 import type { RuntimeName } from 'runtime-compat-data'
 import { parseProviderData } from './parseProviderData'
 
+/**
+ * Creates a runtime-compat rule.
+ * @param filterRuntimes - List of runtimes to check.
+ * @returns ESLint rule.
+ */
 export const runtimeCompatRule = (
   filterRuntimes: RuntimeName[],
 ): Rule.RuleModule => ({

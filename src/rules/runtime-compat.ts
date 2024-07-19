@@ -1,7 +1,9 @@
 import type { Rule } from 'eslint'
 import type { Identifier } from 'estree'
 import type { RuntimeName } from 'runtime-compat-data'
-import { parseProviderData } from './parseProviderData'
+import data from 'runtime-compat-data'
+import { filterSupportCompatData } from '../utils/filterSupportCompatData'
+import { mapCompatData } from '../utils/mapCompatData'
 
 /**
  * Creates a runtime-compat rule.
@@ -21,7 +23,11 @@ export const runtimeCompatRule = (
     schema: [{ type: 'string' }],
   },
   create: (context) => {
-    const unsupportedApis = parseProviderData(filterRuntimes)
+    const compatDataMap = mapCompatData(data)
+    const unsupportedApis = filterSupportCompatData(
+      compatDataMap,
+      filterRuntimes,
+    )
 
     const reportError = (node: Identifier, unsupportesApiId: string) => {
       const apiInfo = unsupportedApis[unsupportesApiId]

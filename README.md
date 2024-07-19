@@ -4,9 +4,9 @@ Lint JavaScript runtime compatability issues during development.
 
 <div flex align="center">
 <img alt="GitHub" src="https://img.shields.io/github/license/menglinmaker/eslint-plugin-runtime-compat">
-<img src="https://img.shields.io/github/workflow/status/menglinmaker/eslint-plugin-runtime-compat/CI">
-<a href="https://badge.fury.io/js/@menglinmaker%2Feslint-plugin-runtime-compat"><img src="https://badge.fury.io/js/@menglinmaker%2Feslint-plugin-runtime-compat.svg" alt="npm version" height="18"></a>
-<a href="https://npm-stat.com/charts.html?package=eslint-plugin-runtime-compat"><img src="https://img.shields.io/npm/dm/eslint-plugin-runtime-compat.svg" alt="npm version" height="18"></a>
+<img src="https://img.shields.io/github/actions/workflow/status/menglinmaker/eslint-plugin-runtime-compat/CI.yml">
+<a href="https://badge.fury.io/js/@menglinmaker%2Feslint-plugin-runtime-compat"><img src="https://badge.fury.io/js/@menglinmaker%2Feslint-plugin-runtime-compat.svg" alt="npm version"></a>
+<a href="https://npm-stat.com/charts.html?package=eslint-plugin-runtime-compat"><img src="https://img.shields.io/npm/dm/eslint-plugin-runtime-compat.svg" alt="npm version"></a>
 </div>
 
 &nbsp;

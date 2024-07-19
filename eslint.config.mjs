@@ -1,6 +1,6 @@
 import pluginJs from '@eslint/js'
-import runtimeCompat from '@menglinmaker/eslint-plugin-runtime-compat'
 import tseslint from 'typescript-eslint'
+import runtimeCompat from './dist/index.js'
 
 export default [
   {

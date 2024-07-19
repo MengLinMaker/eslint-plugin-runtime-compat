@@ -19,14 +19,13 @@
     "format": "biome check --write --verbose",
     "lint": "eslint --fix & tsc --noEmit --incremental",
     "test": "vitest",
-    "build": "rimraf dist && rollup -c && pnpm link .",
+    "build": "rimraf dist && rollup -c && pnpm",
     "release": "changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@changesets/cli": "^2.27.7",
     "@eslint/js": "^9.6.0",
-    "@menglinmaker/eslint-plugin-runtime-compat": "file:",
     "@rollup/plugin-json": "^6.1.0",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.10",

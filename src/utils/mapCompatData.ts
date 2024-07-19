@@ -18,14 +18,11 @@ export const mapCompatData = (compatData: object) => {
     const keys = objectKeys(compatData) as never[]
     for (const key of keys) {
       const subData = compatData[key]
-      if (key === __compat)
-        parsedCompatData[JSON.stringify(parentKeys)] = subData
+      if (key === __compat) parsedCompatData[JSON.stringify(parentKeys)] = subData
       else {
         // Only chain keys if "__compat" exists
         const nodeHasCompatData = !keys.includes(__compat)
-        const filteredParentKeys = nodeHasCompatData
-          ? [key]
-          : [...parentKeys, key]
+        const filteredParentKeys = nodeHasCompatData ? [key] : [...parentKeys, key]
         dfsParse(subData, filteredParentKeys)
       }
     }

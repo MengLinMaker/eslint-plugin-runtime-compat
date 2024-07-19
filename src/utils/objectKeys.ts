@@ -3,5 +3,4 @@
  * @param object - The object.
  * @return Object key array.
  */
-export const objectKeys = <T extends object>(object: T) =>
-  Object.keys(object) as (keyof T)[]
+export const objectKeys = <T extends object>(object: T) => Object.keys(object) as (keyof T)[]

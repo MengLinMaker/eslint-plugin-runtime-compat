@@ -1,28 +1,16 @@
 import type { RuntimeName } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import type { ParsedCompatData } from '../../src/types/parsedCompatData'
-import type { RawCompatDataMap } from '../../src/types/rawCompatData'
+import type { ParsedCompatData, RawCompatDataMap } from '../../src/types'
 import { filterSupportCompatData } from '../../src/utils/filterSupportCompatData'
 
 describe('filterSupportCompatData', () => {
   const filterRuntimes: RuntimeName[] = ['node']
-  const sampleStatus = {
-    deprecated: false,
-    standard_track: true,
-    experimental: false,
-  }
+  const sampleStatus = { deprecated: false, standard_track: true, experimental: false }
   const sampleCompatData: RawCompatDataMap = {
-    someApi: {
-      status: sampleStatus,
-      support: {},
-    },
+    someApi: { status: sampleStatus, support: {} },
   }
   const expectedParsedData: Record<string, ParsedCompatData> = {
-    someApi: {
-      url: undefined,
-      status: sampleStatus,
-      unsupported: filterRuntimes,
-    },
+    someApi: { url: undefined, status: sampleStatus, unsupported: filterRuntimes },
   }
 
   it('should prefer mdn_url', () => {
@@ -32,10 +20,7 @@ describe('filterSupportCompatData', () => {
     _sampleCompatData.someApi.spec_url = 'spec_url'
     _expectedParsedData.someApi.url = 'mdn_url'
 
-    const unsupportedRuntimes = filterSupportCompatData(
-      _sampleCompatData,
-      filterRuntimes,
-    )
+    const unsupportedRuntimes = filterSupportCompatData(_sampleCompatData, filterRuntimes)
     expect(unsupportedRuntimes).toEqual(_expectedParsedData)
   })
 
@@ -45,18 +30,12 @@ describe('filterSupportCompatData', () => {
     _sampleCompatData.someApi.spec_url = 'spec_url'
     _expectedParsedData.someApi.url = 'spec_url'
 
-    const unsupportedRuntimes = filterSupportCompatData(
-      _sampleCompatData,
-      filterRuntimes,
-    )
+    const unsupportedRuntimes = filterSupportCompatData(_sampleCompatData, filterRuntimes)
     expect(unsupportedRuntimes).toEqual(_expectedParsedData)
   })
 
   it('should fallback undefined url when no url is defined', () => {
-    const unsupportedRuntimes = filterSupportCompatData(
-      sampleCompatData,
-      filterRuntimes,
-    )
+    const unsupportedRuntimes = filterSupportCompatData(sampleCompatData, filterRuntimes)
     expect(unsupportedRuntimes).toEqual(expectedParsedData)
   })
 
@@ -64,10 +43,7 @@ describe('filterSupportCompatData', () => {
     const _sampleCompatData = structuredClone(sampleCompatData)
     _sampleCompatData.someApi.support.node = { version_added: true }
 
-    const unsupportedRuntimes = filterSupportCompatData(
-      _sampleCompatData,
-      filterRuntimes,
-    )
+    const unsupportedRuntimes = filterSupportCompatData(_sampleCompatData, filterRuntimes)
     expect(unsupportedRuntimes).toEqual({})
   })
 

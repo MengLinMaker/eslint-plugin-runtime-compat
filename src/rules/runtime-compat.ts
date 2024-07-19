@@ -10,9 +10,7 @@ import { mapCompatData } from '../utils/mapCompatData'
  * @param filterRuntimes - List of runtimes to check.
  * @returns ESLint rule.
  */
-export const runtimeCompatRule = (
-  filterRuntimes: RuntimeName[],
-): Rule.RuleModule => ({
+export const runtimeCompatRule = (filterRuntimes: RuntimeName[]): Rule.RuleModule => ({
   meta: {
     docs: {
       description: 'Ensure cross-runtime API compatibility',
@@ -23,10 +21,7 @@ export const runtimeCompatRule = (
     schema: [{ type: 'string' }],
   },
   create: (context) => {
-    const unsupportedApis = filterSupportCompatData(
-      mapCompatData(data),
-      filterRuntimes,
-    )
+    const unsupportedApis = filterSupportCompatData(mapCompatData(data), filterRuntimes)
     const reportError = (node: Identifier, unsupportesApiId: string) => {
       const apiInfo = unsupportedApis[unsupportesApiId]
       if (apiInfo) {

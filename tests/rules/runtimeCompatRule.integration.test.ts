@@ -12,39 +12,22 @@ const cacheErrorMsg =
 
 it('should pass eslint "runtime-compat" test', () => {
   ruleTester.run('runtime-compat', runtimeCompatRule(filterRuntimes), {
-    valid: [
-      {
-        code: 'fetch("https://www.google.com")',
-      },
-    ],
+    valid: [{ code: 'fetch("https://www.google.com")' }],
     invalid: [
       {
-        // Detect
         code: 'const a = new Cache(); let b = new Cache(); b = new Cache()',
         errors: [
-          {
-            message: cacheErrorMsg,
-          },
-          {
-            message: cacheErrorMsg,
-          },
-          {
-            message: cacheErrorMsg,
-          },
+          { message: cacheErrorMsg },
+          { message: cacheErrorMsg },
+          { message: cacheErrorMsg },
         ],
       },
       {
         code: 'const n = Cache; let b = new Cache; b = new Cache',
         errors: [
-          {
-            message: cacheErrorMsg,
-          },
-          {
-            message: cacheErrorMsg,
-          },
-          {
-            message: cacheErrorMsg,
-          },
+          { message: cacheErrorMsg },
+          { message: cacheErrorMsg },
+          { message: cacheErrorMsg },
         ],
       },
     ],

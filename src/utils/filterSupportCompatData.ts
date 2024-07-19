@@ -18,15 +18,11 @@ export const filterSupportCompatData = (
     const rawCompatDatum = flatCompatData[apiKeys]
     if (rawCompatDatum === undefined) continue
 
-    const unsupportedRuntimes = getUnsupportedRuntimes(
-      rawCompatDatum,
-      filterRuntimes,
-    )
+    const unsupportedRuntimes = getUnsupportedRuntimes(rawCompatDatum, filterRuntimes)
     if (unsupportedRuntimes.length > 0) {
       let url = rawCompatDatum.mdn_url
       if (url === undefined) {
-        if (Array.isArray(rawCompatDatum.spec_url))
-          url = rawCompatDatum.spec_url[0]
+        if (Array.isArray(rawCompatDatum.spec_url)) url = rawCompatDatum.spec_url[0]
         else url = rawCompatDatum.spec_url
       }
       parsedCompatData[apiKeys] = {

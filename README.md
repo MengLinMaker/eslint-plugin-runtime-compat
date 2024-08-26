@@ -9,6 +9,8 @@
 
 <h4 align="center">Lint JavaScript runtime compatability issues during development.</h4>
 
+Note: This ESLint plugin is still under development. Please submit a issue or PR if you have any suggestions and changes.
+
 &nbsp;
 
 ## Setup
@@ -46,7 +48,7 @@ Prerequisite - must have `pnpm` installed. All git-hooks for formatting will be 
 
 &nbsp;
 
-## Dev log
+## Problem statement
 
 ### What problem does this solve?
 The feedback cycle for detecting and fixing runtime compatability issues is too large:
@@ -55,6 +57,8 @@ The feedback cycle for detecting and fixing runtime compatability issues is too 
 
 ### Solution
 Lint compatability issues before deployment using pre-collected [runtime-compat-data](https://github.com/unjs/runtime-compat/tree/main/packages/runtime-compat-data).
+
+An alternative approach is to use [remocal testing](https://theburningmonk.com/2022/05/my-testing-strategy-for-serverless-applications/#:~:text=A%20remocal%20test%20is%20when,aka%20testing%20in%20the%20cloud). However, this does require a more complex setup with more test code to maintain.
 
 ### Limitations:
 - Does not [lint across multiple files](https://github.com/eslint/eslint/discussions/15388#discussioncomment-1747795) since ESLint only analyses each file in isolation.

@@ -19,7 +19,7 @@
     "format": "biome check --write --verbose",
     "lint": "eslint --fix & tsc --noEmit --incremental",
     "test": "vitest",
-    "build": "rimraf dist && rollup -c",
+    "build": "rimraf dist && rollup -c .",
     "release": "changeset publish"
   },
   "devDependencies": {

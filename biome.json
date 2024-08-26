@@ -8,10 +8,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "style": {
-        "useNodejsImportProtocol": "off"
-      }
+      "recommended": true
     }
   },
   "javascript": {
@@ -21,8 +18,7 @@
     }
   },
   "files": {
-    "ignore": ["coverage", "dist", "node_modules", ".vscode/settings.json"],
-    "ignoreUnknown": true,
-    "maxSize": 50000000
+    "ignore": ["coverage", "dist", "node_modules"],
+    "ignoreUnknown": true
   }
 }

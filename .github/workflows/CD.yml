@@ -9,10 +9,11 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: write
+  issues: write
   pull-requests: write
 
 jobs:
-  publish:
+  release:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
@@ -25,12 +26,17 @@ jobs:
           node-version: latest
           cache: 'pnpm'
 
-      - run: pnpm install
-      - name: Create Release Pull Request or Publish
+      - name: Build library
+        run: pnpm install && pnpm build
+
+      - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm build && pnpm release
+          publish: pnpm release
+          version: npm run version
+          commit: "chore: new release"
+          title: "chore: new release candidate"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

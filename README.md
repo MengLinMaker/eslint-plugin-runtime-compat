@@ -22,7 +22,7 @@ npm install @menglinmaker/eslint-plugin-runtime-compat
 
 2. Add ESLint config
 ```Bash
-import runtimeCompat from "@menglinmaker/eslint-runtime-compat";
+import runtimeCompat from "@menglinmaker/eslint-plugin-runtime-compat";
 
 export default [runtimeCompat.configs.strict];
 ```

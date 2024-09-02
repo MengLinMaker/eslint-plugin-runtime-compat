@@ -27,14 +27,14 @@ jobs:
           cache: 'pnpm'
 
       - name: Build library
-        run: pnpm install && pnpm build
+        run: pnpm install && pnpm build && pnpm run version
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
           publish: pnpm release
-          version: npm run version
+          version: pnpm run version
           commit: "chore: new release"
           title: "chore: new release candidate"
         env:

@@ -35,7 +35,7 @@
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.5.2",
     "@vitest/coverage-v8": "^2.0.5",
-    "cz-git": "1.10.0",
+    "cz-git": "1.10.1",
     "czg": "1.10.0",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.2.4",

@@ -1,5 +1,4 @@
 export type { RuntimeName } from 'runtime-compat-data'
-import type { Linter } from 'eslint'
 import type { RuntimeName } from 'runtime-compat-data'
 import pkg from '../package.json'
 import { supportedRuntimes } from './constants'
@@ -20,7 +19,7 @@ const defaultRuleConfig: RuleConfig = {
 const runtimeCompatPlugin = (
   filterRuntimes: RuntimeName[],
   ruleConfig: RuleConfig = defaultRuleConfig,
-): Linter.FlatConfig => ({
+) => ({
   plugins: {
     'runtime-compat': {
       meta: {

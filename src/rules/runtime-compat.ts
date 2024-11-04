@@ -1,4 +1,4 @@
-import type { Identifier } from 'estree'
+import { ESLintUtils } from '@typescript-eslint/utils'
 import data from 'runtime-compat-data'
 import type { RuleConfig } from '../types'
 import { compatErrorMessage } from '../utils/compatErrorMessage'
@@ -24,13 +24,15 @@ export const runtimeCompatRule = (filterRuntimes: data.RuntimeName[], ruleConfig
     },
     defaultOptions: [],
     create: (context) => {
+      const services = ESLintUtils.getParserServices(context)
+
       const unsupportedApis = filterSupportCompatData(
         mapCompatData(data),
         filterRuntimes,
         ruleConfig,
       )
 
-      const reportError = (node: Identifier, unsupportesApiId: string) => {
+      const reportError = <T>(node: T, unsupportesApiId: string) => {
         const apiInfo = unsupportedApis[unsupportesApiId]
         if (!apiInfo) return
         const message = compatErrorMessage(unsupportesApiId, apiInfo)
@@ -39,22 +41,12 @@ export const runtimeCompatRule = (filterRuntimes: data.RuntimeName[], ruleConfig
       }
 
       return {
-        TSInterfaceDeclaration: (node) => {
-          console.log(node)
-        },
-        Identifier: (identifierNode) => {
-          // Detect a class constructor
-          if (identifierNode.parent.type === 'NewExpression') {
-            const unsupportesApiId = JSON.stringify([identifierNode.name])
-            reportError(identifierNode, unsupportesApiId)
-          }
-          // Detect variable assignment from class
-          if (identifierNode.parent.type === 'VariableDeclarator') {
-            if (identifierNode.parent.init === identifierNode) {
-              const unsupportesApiId = JSON.stringify([identifierNode.name])
-              reportError(identifierNode, unsupportesApiId)
-            }
-          }
+        NewExpression: (node) => {
+          const type = services.getTypeAtLocation(node)
+          const checker = services.program.getTypeChecker()
+          const className = checker.typeToString(type)
+          const unsupportesApiId = JSON.stringify([className])
+          reportError(node, unsupportesApiId)
         },
       }
     },

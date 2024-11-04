@@ -25,6 +25,7 @@ export const runtimeCompatRule = (filterRuntimes: data.RuntimeName[], ruleConfig
     defaultOptions: [],
     create: (context) => {
       const services = ESLintUtils.getParserServices(context)
+      const checker = services.program.getTypeChecker()
 
       const unsupportedApis = filterSupportCompatData(
         mapCompatData(data),
@@ -41,11 +42,23 @@ export const runtimeCompatRule = (filterRuntimes: data.RuntimeName[], ruleConfig
       }
 
       return {
+        // Check compat for class instantiations
         NewExpression: (node) => {
-          const type = services.getTypeAtLocation(node)
-          const checker = services.program.getTypeChecker()
-          const className = checker.typeToString(type)
+          const classType = services.getTypeAtLocation(node)
+          const className = checker.typeToString(classType)
+
           const unsupportesApiId = JSON.stringify([className])
+          reportError(node, unsupportesApiId)
+        },
+        // Check compat for class property access
+        MemberExpression: (node) => {
+          const classType = services.getTypeAtLocation(node.object)
+          const className = checker.typeToString(classType)
+
+          const propertyType = services.getTypeAtLocation(node.property)
+          const propertyName = propertyType.getSymbol()?.escapedName
+
+          const unsupportesApiId = JSON.stringify([className, propertyName])
           reportError(node, unsupportesApiId)
         },
       }

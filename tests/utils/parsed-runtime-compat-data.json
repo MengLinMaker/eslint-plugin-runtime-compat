@@ -79,7 +79,7 @@
       "workerd": { "version_added": false }
     }
   },
-  "[\"AbortSignal\",\"abort_static\"]": {
+  "[\"AbortSignal\",\"abort\"]": {
     "description": "<code>abort()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static",
     "source_file": "api/AbortSignal.json",
@@ -95,7 +95,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"AbortSignal\",\"abort_static\",\"reason_parameter\"]": {
+  "[\"AbortSignal\",\"abort\",\"reason_parameter\"]": {
     "description": "<code>reason</code> parameter",
     "source_file": "api/AbortSignal.json",
     "spec_url": "https://dom.spec.whatwg.org/#abortsignal-abort-reason",
@@ -125,7 +125,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"AbortSignal\",\"any_static\"]": {
+  "[\"AbortSignal\",\"any\"]": {
     "description": "<code>any()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static",
     "source_file": "api/AbortSignal.json",
@@ -171,7 +171,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"AbortSignal\",\"timeout_static\"]": {
+  "[\"AbortSignal\",\"timeout\"]": {
     "description": "<code>timeout()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout_static",
     "source_file": "api/AbortSignal.json",
@@ -3478,7 +3478,7 @@
       "workerd": { "version_added": false }
     }
   },
-  "[\"PerformanceObserver\",\"supportedEntryTypes_static\"]": {
+  "[\"PerformanceObserver\",\"supportedEntryTypes\"]": {
     "description": "<code>supportedEntryTypes()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/PerformanceObserver/supportedEntryTypes_static",
     "source_file": "api/PerformanceObserver.json",
@@ -4126,7 +4126,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"from_static\"]": {
+  "[\"from\"]": {
     "description": "<code>from()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/ReadableStream/from_static",
     "source_file": "api/ReadableStream.json",
@@ -4729,7 +4729,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"Response\",\"error_static\"]": {
+  "[\"Response\",\"error\"]": {
     "description": "<code>error()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/Response/error_static",
     "source_file": "api/Response.json",
@@ -4776,21 +4776,6 @@
     }
   },
   "[\"Response\",\"json\"]": {
-    "mdn_url": "https://developer.mozilla.org/docs/Web/API/Response/json",
-    "source_file": "api/Response.json",
-    "spec_url": "https://fetch.spec.whatwg.org/#ref-for-dom-body-json①",
-    "status": { "deprecated": false, "experimental": false, "standard_track": true },
-    "support": {
-      "bun": { "version_added": true },
-      "deno": { "version_added": true },
-      "edge-light": { "version_added": true },
-      "fastly": { "version_added": true },
-      "netlify": { "version_added": true },
-      "node": { "version_added": true },
-      "workerd": { "version_added": true }
-    }
-  },
-  "[\"Response\",\"json_static\"]": {
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/Response/json_static",
     "source_file": "api/Response.json",
     "spec_url": "https://fetch.spec.whatwg.org/#ref-for-dom-response-json①",
@@ -4820,7 +4805,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"Response\",\"redirect_static\"]": {
+  "[\"Response\",\"redirect\"]": {
     "description": "<code>redirect()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/Response/redirect_static",
     "source_file": "api/Response.json",
@@ -5652,7 +5637,7 @@
       "workerd": { "version_added": false }
     }
   },
-  "[\"URL\",\"canParse_static\"]": {
+  "[\"URL\",\"canParse\"]": {
     "description": "<code>canParse()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/URL/canParse_static",
     "source_file": "api/URL.json",
@@ -5668,7 +5653,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"URL\",\"createObjectURL_static\"]": {
+  "[\"URL\",\"createObjectURL\"]": {
     "description": "<code>createObjectURL()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static",
     "source_file": "api/URL.json",
@@ -5819,7 +5804,7 @@
       "workerd": { "version_added": false }
     }
   },
-  "[\"URL\",\"revokeObjectURL_static\"]": {
+  "[\"URL\",\"revokeObjectURL\"]": {
     "description": "<code>revokeObjectURL()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL_static",
     "source_file": "api/URL.json",
@@ -6992,7 +6977,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"assert_static\"]": {
+  "[\"console\",\"assert\"]": {
     "description": "<code>assert()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/assert_static",
     "source_file": "api/_globals/console.json",
@@ -7008,7 +6993,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"clear_static\"]": {
+  "[\"console\",\"clear\"]": {
     "description": "<code>clear()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/clear_static",
     "source_file": "api/_globals/console.json",
@@ -7024,7 +7009,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"countReset_static\"]": {
+  "[\"console\",\"countReset\"]": {
     "description": "<code>countReset()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/countReset_static",
     "source_file": "api/_globals/console.json",
@@ -7040,7 +7025,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"count_static\"]": {
+  "[\"console\",\"count\"]": {
     "description": "<code>count()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/count_static",
     "source_file": "api/_globals/console.json",
@@ -7056,7 +7041,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"debug_static\"]": {
+  "[\"console\",\"debug\"]": {
     "description": "<code>debug()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/debug_static",
     "source_file": "api/_globals/console.json",
@@ -7072,7 +7057,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"dir_static\"]": {
+  "[\"console\",\"dir\"]": {
     "description": "<code>dir()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/dir_static",
     "source_file": "api/_globals/console.json",
@@ -7088,7 +7073,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"dirxml_static\"]": {
+  "[\"console\",\"dirxml\"]": {
     "description": "<code>dirxml()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/dirxml_static",
     "source_file": "api/_globals/console.json",
@@ -7104,7 +7089,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"error_static\"]": {
+  "[\"console\",\"error\"]": {
     "description": "<code>error()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/error_static",
     "source_file": "api/_globals/console.json",
@@ -7120,7 +7105,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"groupCollapsed_static\"]": {
+  "[\"console\",\"groupCollapsed\"]": {
     "description": "<code>groupCollapsed()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/groupCollapsed_static",
     "source_file": "api/_globals/console.json",
@@ -7136,7 +7121,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"groupEnd_static\"]": {
+  "[\"console\",\"groupEnd\"]": {
     "description": "<code>groupEnd()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/groupEnd_static",
     "source_file": "api/_globals/console.json",
@@ -7152,7 +7137,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"group_static\"]": {
+  "[\"console\",\"group\"]": {
     "description": "<code>group()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/group_static",
     "source_file": "api/_globals/console.json",
@@ -7168,7 +7153,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"info_static\"]": {
+  "[\"console\",\"info\"]": {
     "description": "<code>info()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/info_static",
     "source_file": "api/_globals/console.json",
@@ -7184,7 +7169,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"log_static\"]": {
+  "[\"console\",\"log\"]": {
     "description": "<code>log()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/log_static",
     "source_file": "api/_globals/console.json",
@@ -7200,7 +7185,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"profileEnd_static\"]": {
+  "[\"console\",\"profileEnd\"]": {
     "description": "<code>profileEnd()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/profileEnd_static",
     "source_file": "api/_globals/console.json",
@@ -7215,7 +7200,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"profile_static\"]": {
+  "[\"console\",\"profile\"]": {
     "description": "<code>profile()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/profile_static",
     "source_file": "api/_globals/console.json",
@@ -7230,7 +7215,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"table_static\"]": {
+  "[\"console\",\"table\"]": {
     "description": "<code>table()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/table_static",
     "source_file": "api/_globals/console.json",
@@ -7246,7 +7231,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"timeEnd_static\"]": {
+  "[\"console\",\"timeEnd\"]": {
     "description": "<code>timeEnd()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/timeEnd_static",
     "source_file": "api/_globals/console.json",
@@ -7262,7 +7247,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"timeLog_static\"]": {
+  "[\"console\",\"timeLog\"]": {
     "description": "<code>timeLog()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/timeLog_static",
     "source_file": "api/_globals/console.json",
@@ -7278,7 +7263,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"timeStamp_static\"]": {
+  "[\"console\",\"timeStamp\"]": {
     "description": "<code>timeStamp()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/timeStamp_static",
     "source_file": "api/_globals/console.json",
@@ -7293,7 +7278,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"time_static\"]": {
+  "[\"console\",\"time\"]": {
     "description": "<code>time()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/time_static",
     "source_file": "api/_globals/console.json",
@@ -7309,7 +7294,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"trace_static\"]": {
+  "[\"console\",\"trace\"]": {
     "description": "<code>trace()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/trace_static",
     "source_file": "api/_globals/console.json",
@@ -7325,7 +7310,7 @@
       "workerd": { "version_added": true }
     }
   },
-  "[\"console\",\"warn_static\"]": {
+  "[\"console\",\"warn\"]": {
     "description": "<code>warn()</code> static method",
     "mdn_url": "https://developer.mozilla.org/docs/Web/API/console/warn_static",
     "source_file": "api/_globals/console.json",

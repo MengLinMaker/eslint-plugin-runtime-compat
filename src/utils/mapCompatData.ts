@@ -22,12 +22,15 @@ export const mapCompatData = (compatData: CompatData) => {
       const subData = compatData[key] as CompatStatement
       if (key === __compat) {
         // Prefer <Class> <Class> data for constructor compat for accuracy
-        if (parentKeys.length > 1 && parentKeys[0] === parentKeys[1]) {
+        const finalKeys = parentKeys.map((key) => {
+          return key.replace('_static', '')
+        })
+        if (finalKeys.length > 1 && finalKeys[0] === finalKeys[1]) {
           // Reduce to single <Class> key to override previous compat data
-          const shortendedKey = JSON.stringify(parentKeys.slice(1, parentKeys.length))
+          const shortendedKey = JSON.stringify(finalKeys.slice(1, finalKeys.length))
           parsedCompatData[shortendedKey] = subData
         } else {
-          parsedCompatData[JSON.stringify(parentKeys)] = subData
+          parsedCompatData[JSON.stringify(finalKeys)] = subData
         }
       } else {
         // Only chain keys if "__compat" exists

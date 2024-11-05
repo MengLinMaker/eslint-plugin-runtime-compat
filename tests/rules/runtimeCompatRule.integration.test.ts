@@ -13,7 +13,12 @@ ruleTester.run(
     experimental: false,
   }),
   {
-    valid: ['fetch("https://www.google.com")'],
+    valid: [
+      `
+        fetch("https://www.google.com")
+        new URL("https://www.google.com")
+      `,
+    ],
     invalid: [
       {
         code: `

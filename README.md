@@ -7,7 +7,7 @@
 <a href="https://npm-stat.com/charts.html?package=eslint-plugin-runtime-compat"><img src="https://img.shields.io/npm/dm/eslint-plugin-runtime-compat.svg" alt="npm version"></a>
 </div>
 
-<h4 align="center">Lint JavaScript runtime compatability issues during development.</h4>
+<h4 align="center">Lint JavaScript runtime compat issues before deployment!</h4>
 
 &nbsp;
 
@@ -15,6 +15,7 @@
 - [x] Configure range of providers according to [runtime-compat](https://runtime-compat.unjs.io/)
 - [x] Detect incompatible class instantiations
 - [x] Detect incompatible class property access
+- [ ] Disable rules
 - [ ] Detect incompatible event listeners
 
 **Note: Project is in alpha. API may change**
@@ -22,6 +23,8 @@
 &nbsp;
 
 ## Setup
+
+The linter config should target the server bundle, not client.
 
 1. Install
 ```Bash
@@ -45,34 +48,9 @@ export default [runtimeCompat.configs.custom(['node', 'bun', 'deno'], {
 
 &nbsp;
 
-## Contributing
-Prerequisite - must have `pnpm` installed. All git-hooks for formatting will be automatically installed and configured.
+## Limitations:
+- Does not [lint across multiple files](https://github.com/eslint/eslint/discussions/15388#discussioncomment-1747795) since ESLint only analyses each file in isolation by building an AST for each file.
+- Cannot detect when globals are overridden
 
-1. Clone repo
-2. Build dist before linting - `pnpm run build`
-3. Contribute to some files
-4. Create a pull request changeset - `pnpm changeset`
-5. Approved PRs that passes CI will be released to npm
-
-&nbsp;
-
-## Problem statement
-
-### What problem does this solve?
-The feedback cycle for detecting and fixing runtime compatability issues is too large:
-- Executing JavaScript requires a runtime, which there are [many that do not fully comply to web standards](https://runtime-compat.unjs.io/). So what runs on [Node.js](https://nodejs.org) locally and CI may not run on [Cloudflare workers](https://workers.cloudflare.com/) in production.
-- As an interpreted language, incompatible JavaScript will only throw errors on execution, so errors may not occur immediately.
-
-### Solution
-Lint compatability issues before deployment using pre-collected [runtime-compat-data](https://github.com/unjs/runtime-compat/tree/main/packages/runtime-compat-data).
-
-An alternative approach is to use [remocal testing](https://theburningmonk.com/2022/05/my-testing-strategy-for-serverless-applications/#:~:text=A%20remocal%20test%20is%20when,aka%20testing%20in%20the%20cloud). However, this does require a more complex setup with more test code to maintain.
-
-### Limitations:
-- Does not [lint across multiple files](https://github.com/eslint/eslint/discussions/15388#discussioncomment-1747795) since ESLint only analyses each file in isolation.
-- Cannot detect overiding of APIs - variables cannot be tracked across files due to ESLint's design.
-
-### Todo:
-- Track variable reassignments within a file.
-- Detect incompatability issues from instance methods and properties.
-- Disable rules due to polyfills.
+## Attibution
+- [runtime-compat](https://github.com/unjs/runtime-compat) from [UnJS](https://github.com/unjs)

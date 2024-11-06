@@ -9,7 +9,15 @@
 
 <h4 align="center">Lint JavaScript runtime compatability issues during development.</h4>
 
-Note: This ESLint plugin is still under development. Please submit a issue or PR if you have any suggestions and changes.
+&nbsp;
+
+## Features:
+- [x] Configure range of providers according to [runtime-compat](https://runtime-compat.unjs.io/)
+- [x] Detect incompatible class instantiations
+- [x] Detect incompatible class property access
+- [ ] Detect incompatible event listeners
+
+**Note: Project is in alpha. API may change**
 
 &nbsp;
 

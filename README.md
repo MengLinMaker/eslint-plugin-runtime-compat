@@ -20,8 +20,6 @@
 
 **Note: Project is in alpha. API may change**
 
-&nbsp;
-
 ## Setup
 
 The linter config should target the server bundle, not client.
@@ -31,7 +29,7 @@ The linter config should target the server bundle, not client.
 npm install @menglinmaker/eslint-plugin-runtime-compat
 ```
 
-2. Add ESLint config
+2. Add `eslint.config.mjs` to root
 ```Bash
 import runtimeCompat from "@menglinmaker/eslint-plugin-runtime-compat";
 
@@ -45,8 +43,6 @@ export default [runtimeCompat.configs.custom(['node', 'bun', 'deno'], {
   experimental: true,
 })];
 ```
-
-&nbsp;
 
 ## Limitations:
 - Does not [lint across multiple files](https://github.com/eslint/eslint/discussions/15388#discussioncomment-1747795) since ESLint only analyses each file in isolation by building an AST for each file.

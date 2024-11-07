@@ -26,6 +26,7 @@ ruleTester.run(
             let cache = new _Cache()
             cache.add("test.html")
           `,
+        // @ts-expect-error message is legacy
         errors: [{ message: cacheInstantiationError }, { message: cachePropertyAccessError }],
       },
       {
@@ -33,6 +34,7 @@ ruleTester.run(
             const cache = new Cache()
             cache.add("test.html")
           `,
+        // @ts-expect-error message is legacy
         errors: [{ message: cacheInstantiationError }, { message: cachePropertyAccessError }],
       },
       {
@@ -40,6 +42,7 @@ ruleTester.run(
             new Cache().add("test.html")
           `,
         // Interestingly property access error is thrown before class instantiation error
+        // @ts-expect-error message is legacy
         errors: [{ message: cachePropertyAccessError }, { message: cacheInstantiationError }],
       },
     ],

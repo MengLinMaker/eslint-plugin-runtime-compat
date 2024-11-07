@@ -1,10 +1,9 @@
 import { ESLintUtils } from '@typescript-eslint/utils'
 import data from 'runtime-compat-data'
+import { filterSupportCompatData } from '../data/filterSupportCompatData'
+import { mapCompatData } from '../data/mapCompatData'
 import type { RuleConfig } from '../types'
-import { compatErrorMessage } from '../utils/compatErrorMessage'
-import { filterSupportCompatData } from '../utils/filterSupportCompatData'
-import { mapCompatData } from '../utils/mapCompatData'
-import { createRule } from './createRule'
+import { compatErrorMessage, createRule } from './utils'
 
 /**
  * Creates a runtime-compat rule.

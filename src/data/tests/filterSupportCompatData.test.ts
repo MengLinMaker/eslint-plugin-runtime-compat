@@ -1,7 +1,7 @@
 import type { RuntimeName } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import type { ParsedCompatData, RawCompatDataMap, RuleConfig } from '../../src/types'
-import { filterSupportCompatData } from '../../src/utils/filterSupportCompatData'
+import { filterSupportCompatData } from '../filterSupportCompatData'
+import type { ParsedCompatData, RawCompatDataMap, RuleConfig } from '../types'
 
 describe('filterSupportCompatData', () => {
   const filterRuntimes: RuntimeName[] = ['node']
@@ -20,9 +20,10 @@ describe('filterSupportCompatData', () => {
   it('should prefer mdn_url', () => {
     const _sampleCompatData = structuredClone(sampleCompatData)
     const _expectedParsedData = structuredClone(expectedParsedData)
-    _sampleCompatData.someApi.mdn_url = 'mdn_url'
-    _sampleCompatData.someApi.spec_url = 'spec_url'
-    _expectedParsedData.someApi.url = 'mdn_url'
+    if (!_sampleCompatData['someApi'] || !_expectedParsedData['someApi']) return
+    _sampleCompatData['someApi'].mdn_url = 'mdn_url'
+    _sampleCompatData['someApi'].spec_url = 'spec_url'
+    _expectedParsedData['someApi'].url = 'mdn_url'
 
     const unsupportedRuntimes = filterSupportCompatData(
       _sampleCompatData,
@@ -35,8 +36,9 @@ describe('filterSupportCompatData', () => {
   it('should fallback to spec_url when spec_url is undefined', () => {
     const _sampleCompatData = structuredClone(sampleCompatData)
     const _expectedParsedData = structuredClone(expectedParsedData)
-    _sampleCompatData.someApi.spec_url = 'spec_url'
-    _expectedParsedData.someApi.url = 'spec_url'
+    if (!_sampleCompatData['someApi'] || !_expectedParsedData['someApi']) return
+    _sampleCompatData['someApi'].spec_url = 'spec_url'
+    _expectedParsedData['someApi'].url = 'spec_url'
 
     const unsupportedRuntimes = filterSupportCompatData(
       _sampleCompatData,
@@ -57,7 +59,8 @@ describe('filterSupportCompatData', () => {
 
   it('should not parse supported compat datum', () => {
     const _sampleCompatData = structuredClone(sampleCompatData)
-    _sampleCompatData.someApi.support.node = { version_added: true }
+    if (!_sampleCompatData['someApi']) return
+    _sampleCompatData['someApi'].support.node = { version_added: true }
 
     const unsupportedRuntimes = filterSupportCompatData(
       _sampleCompatData,
@@ -74,7 +77,8 @@ describe('filterSupportCompatData', () => {
 
   it('Should include experimental status on strict config', () => {
     const _sampleCompatData = structuredClone(sampleCompatData)
-    _sampleCompatData.someApi.support.node = { version_added: true }
+    if (!_sampleCompatData['someApi']) return
+    _sampleCompatData['someApi'].support.node = { version_added: true }
 
     const unsupportedRuntimes = filterSupportCompatData(_sampleCompatData, filterRuntimes, {
       deprecated: false,

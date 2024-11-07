@@ -14,7 +14,7 @@ pnpm run build
 
 ## Architecture
 
-There are 2 packages. One for data preprocessing, another for runtime linting.
+There are 2 sections. One for data preprocessing, another for runtime linting.
 
 ### `data`
 
@@ -24,10 +24,9 @@ This package contains functions for preprocessing runtime data [`runtime-compat`
 - classInstantiationParam - constructor with param only: CompressionStream/DecompressionStream
 - eventListener - including param
 
-### `plugin`
+### `rules`
 
-The ESLint plugin itself:
-- `rules` contain the ESLint rules
+Contain the ESLint rules
 
 ## Workflows
 

@@ -1,7 +1,7 @@
 import type { CompatStatement, RuntimeName } from 'runtime-compat-data'
-import { getUnsupportedRuntimes } from './getUnsupportedRuntimes'
-import { objectKeys } from './objectKeys'
-import type { ParsedCompatData, RawCompatDataMap, RuleConfig } from './types'
+import { getUnsupportedRuntimes } from './getUnsupportedRuntimes.js'
+import { objectKeys } from './objectKeys.js'
+import type { ParsedCompatData, RawCompatDataMap, RuleConfig } from './types.js'
 
 const extractUrl = (rawCompatDatum: CompatStatement) => {
   let url = rawCompatDatum.mdn_url

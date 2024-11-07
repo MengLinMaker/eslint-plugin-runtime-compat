@@ -1,5 +1,5 @@
+import type { ParsedCompatData } from '@eslint-plugin-runtime-compat/data'
 import { ESLintUtils } from '@typescript-eslint/utils'
-import type { ParsedCompatData } from '../../data'
 
 /**
  * Generates error message from parsed compat data.

@@ -1,6 +1,6 @@
 import type { RuntimeName } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import { getUnsupportedRuntimes } from '../getUnsupportedRuntimes'
+import { getUnsupportedRuntimes } from '../getUnsupportedRuntimes.js'
 
 describe('getUnsupportedRuntimes', () => {
   const filterRuntimes: RuntimeName[] = ['node']

@@ -10,8 +10,8 @@ RuleTester.describe = describe
 export const ruleTester = new RuleTester({
   languageOptions: {
     parserOptions: {
-      project: path.resolve(__dirname, 'resources', 'tsconfig.json'),
-      tsconfigRootDir: path.resolve(__dirname, 'resources'),
+      project: path.resolve(__dirname, 'tsconfig.json'),
+      tsconfigRootDir: path.resolve(__dirname),
     },
   },
 })

@@ -1,5 +1,5 @@
 import type { RuntimeName } from 'runtime-compat-data'
-import { runtimeCompatRule } from '../../src/rules/runtime-compat'
+import { runtimeCompatRule } from '../runtime-compat'
 import { ruleTester } from './setup'
 
 const filterRuntimes: RuntimeName[] = ['node']

@@ -1,5 +1,5 @@
 import { ESLintUtils } from '@typescript-eslint/utils'
-import type { ParsedCompatData } from '../../types'
+import type { ParsedCompatData } from '../../data'
 
 /**
  * Generates error message from parsed compat data.
@@ -27,4 +27,7 @@ export const compatErrorMessage = (unsupportesApiId: string, apiInfo: ParsedComp
   return `'${apiName.join('.')}' - Unsupported ${status}API in ${unsupportedRuntimeString}.${docString}`
 }
 
+/**
+ * Create ESLint rule
+ */
 export const createRule = ESLintUtils.RuleCreator(() => '')

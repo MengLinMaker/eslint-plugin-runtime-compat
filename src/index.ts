@@ -2,8 +2,8 @@ export type { RuntimeName } from 'runtime-compat-data'
 import type { RuntimeName } from 'runtime-compat-data'
 import pkg from '../package.json'
 import { supportedRuntimes } from './constants'
-import { runtimeCompatRule } from './rules/runtime-compat'
-import type { RuleConfig } from './types'
+import type { RuleConfig } from './data'
+import { runtimeCompatRule } from './rules'
 
 const defaultRuleConfig: RuleConfig = {
   deprecated: true,

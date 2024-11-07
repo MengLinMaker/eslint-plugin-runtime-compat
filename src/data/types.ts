@@ -5,8 +5,12 @@ export type RuleConfig = {
   experimental: boolean
 }
 
+interface NeoCompatStatement extends CompatStatement {
+  url?: string
+}
+
 export type RawCompatDataMap = {
-  [key: string]: CompatStatement
+  [key: string]: NeoCompatStatement
 }
 
 export type ParsedCompatData = {

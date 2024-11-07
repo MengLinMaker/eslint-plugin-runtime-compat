@@ -15,7 +15,3 @@ Steps to create behaviour:
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
-
-**Additional Info**
- - Browser: [e.g. chrome, safari]
- - OS: [e.g. iOS, Windows 11]

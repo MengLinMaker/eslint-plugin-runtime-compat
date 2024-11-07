@@ -1,5 +1,5 @@
 import type { CompatData, CompatStatement } from 'runtime-compat-data'
-import { objectKeys } from './objectKeys'
+import { objectKeys } from './objectKeys.js'
 
 // Catch compile errors with constant.
 const __compat = '__compat' as never

@@ -1,0 +1,15 @@
+{
+  "name": "@eslint-plugin-runtime-compat/data",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "runtime-compat-data": "0.0.5"
+  }
+}

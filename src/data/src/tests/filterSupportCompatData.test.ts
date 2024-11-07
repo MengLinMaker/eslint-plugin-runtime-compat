@@ -1,7 +1,7 @@
 import type { RuntimeName } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import { filterSupportCompatData } from '../filterSupportCompatData'
-import type { ParsedCompatData, RawCompatDataMap, RuleConfig } from '../types'
+import { filterSupportCompatData } from '../filterSupportCompatData.js'
+import type { ParsedCompatData, RawCompatDataMap, RuleConfig } from '../types.js'
 
 describe('filterSupportCompatData', () => {
   const filterRuntimes: RuntimeName[] = ['node']

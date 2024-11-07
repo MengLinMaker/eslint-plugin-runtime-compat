@@ -1,8 +1,6 @@
-export type { RuntimeName } from 'runtime-compat-data'
-import type { RuntimeName } from 'runtime-compat-data'
+import type { RuleConfig, RuntimeName } from '@eslint-plugin-runtime-compat/data'
 import pkg from '../package.json'
 import { supportedRuntimes } from './constants'
-import type { RuleConfig } from './data'
 import { runtimeCompatRule } from './rules'
 
 const defaultRuleConfig: RuleConfig = {

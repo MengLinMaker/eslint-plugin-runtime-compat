@@ -1,6 +1,6 @@
 import type { CompatData } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import { mapCompatData } from '../mapCompatData'
+import { mapCompatData } from '../mapCompatData.js'
 import parsedRuntimeCompatData from './parsed-runtime-compat-data.json'
 import sampleRuntimeCompatData from './sample-runtime-compat-data.json'
 

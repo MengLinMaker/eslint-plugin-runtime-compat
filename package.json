@@ -19,8 +19,10 @@
     "commit": "czg",
     "format": "biome check --write --verbose",
     "lint": "tsc --noEmit --incremental",
-    "test": "vitest --no-isolate",
+    "test": "vitest",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap && attw -P .",
+    "build:turbo": "turbo build",
+    "clean": "turbo clean",
     "version": "changeset version",
     "release": "changeset publish",
     "knip": "knip"
@@ -39,12 +41,13 @@
     "knip": "5.36.3",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.3.5",
+    "turbo": "2.2.3",
     "typescript": "5.6.3",
     "vitest": "^2.1.4"
   },
   "dependencies": {
     "@typescript-eslint/utils": "8.12.2",
-    "runtime-compat-data": "^0.0.5"
+    "@eslint-plugin-runtime-compat/data": "workspace:*"
   },
   "peerDependencies": {
     "eslint": ">=9.0.0",
@@ -58,5 +61,6 @@
     "commitizen": {
       "path": "node_modules/cz-git"
     }
-  }
+  },
+  "packageManager": "pnpm@9.12.3"
 }

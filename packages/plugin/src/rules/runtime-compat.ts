@@ -1,6 +1,7 @@
 import {
   type RuleConfig,
   type RuntimeName,
+  data,
   filterSupportCompatData,
   mapCompatData,
 } from '@eslint-plugin-runtime-compat/data'

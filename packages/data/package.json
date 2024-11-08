@@ -5,7 +5,6 @@
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "commit": "czg",
     "format": "biome check --write --verbose",
     "lint": "tsc --noEmit --incremental",
     "test": "vitest",

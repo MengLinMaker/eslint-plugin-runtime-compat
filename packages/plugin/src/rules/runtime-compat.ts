@@ -1,10 +1,10 @@
 import {
   type RuleConfig,
+  type RuntimeName,
   filterSupportCompatData,
   mapCompatData,
 } from '@eslint-plugin-runtime-compat/data'
 import { ESLintUtils } from '@typescript-eslint/utils'
-import data from 'runtime-compat-data'
 import { compatErrorMessage, createRule } from './utils'
 
 /**
@@ -12,7 +12,7 @@ import { compatErrorMessage, createRule } from './utils'
  * @param filterRuntimes - List of runtimes to check.
  * @returns ESLint rule.
  */
-export const runtimeCompatRule = (filterRuntimes: data.RuntimeName[], ruleConfig: RuleConfig) =>
+export const runtimeCompatRule = (filterRuntimes: RuntimeName[], ruleConfig: RuleConfig) =>
   createRule({
     name: 'runtime-compat',
     meta: {

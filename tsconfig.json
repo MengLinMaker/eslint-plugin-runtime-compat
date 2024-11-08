@@ -23,6 +23,6 @@
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true
   },
-  "include": ["src"],
+  "include": ["packages"],
   "exclude": ["**/dist"]
 }

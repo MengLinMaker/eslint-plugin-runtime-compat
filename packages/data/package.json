@@ -5,9 +5,12 @@
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
+    "commit": "czg",
+    "format": "biome check --write --verbose",
+    "lint": "tsc --noEmit --incremental",
+    "test": "vitest",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
-    "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "clean": "rm -rf node_modules"
   },
   "dependencies": {
     "runtime-compat-data": "0.0.5"

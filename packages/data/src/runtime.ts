@@ -61,12 +61,12 @@ export const errorMessage = (
   status: StatusBlock,
   unsupported: RuntimeName[],
 ) => {
-  let apiStatus = status.standard_track ? 'standard ' : ''
-  apiStatus = status.deprecated ? 'deprecated ' : apiStatus
-  apiStatus = status.experimental ? 'experimental ' : apiStatus
+  let apiStatus = status.standard_track ? 'standard' : ''
+  apiStatus = status.deprecated ? 'deprecated' : apiStatus
+  apiStatus = status.experimental ? 'experimental' : apiStatus
 
   const docString = `Docs - ${url}`
-  return `'${keys}' - Unsupported ${apiStatus} API for ${unsupported}.\n${docString}`
+  return `[${keys}] - Unsupported ${apiStatus} API for [${unsupported}]\n${docString}`
 }
 
 /**

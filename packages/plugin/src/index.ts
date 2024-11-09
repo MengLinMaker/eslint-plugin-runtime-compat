@@ -1,12 +1,7 @@
-import type { RuleConfig, RuntimeName } from '@eslint-plugin-runtime-compat/data'
+import type { RuntimeName } from '@eslint-plugin-runtime-compat/data'
 import pkg from '../package.json'
 import { supportedRuntimes } from './constants'
 import { runtimeCompatRule } from './rules'
-
-const defaultRuleConfig: RuleConfig = {
-  deprecated: true,
-  experimental: true,
-}
 
 /**
  * Generate flatconfig for ESLint.
@@ -14,10 +9,7 @@ const defaultRuleConfig: RuleConfig = {
  * @param ruleConfig - List of runtimes to check.
  * @returns Generated flat-config for ESLint.
  */
-const runtimeCompatPlugin = (
-  filterRuntimes: RuntimeName[],
-  ruleConfig: RuleConfig = defaultRuleConfig,
-) => ({
+const runtimeCompatPlugin = (filterRuntimes: RuntimeName[]) => ({
   plugins: {
     'runtime-compat': {
       meta: {
@@ -25,7 +17,7 @@ const runtimeCompatPlugin = (
         version: pkg.version,
       },
       rules: {
-        'runtime-compat': runtimeCompatRule(filterRuntimes, ruleConfig),
+        'runtime-compat': runtimeCompatRule(filterRuntimes),
       },
     },
   },
@@ -35,10 +27,7 @@ const runtimeCompatPlugin = (
 })
 
 export const configs = {
-  recommended: runtimeCompatPlugin(supportedRuntimes, {
-    deprecated: false,
-    experimental: false,
-  }),
+  recommended: runtimeCompatPlugin(supportedRuntimes),
   strict: runtimeCompatPlugin(supportedRuntimes),
   custom: runtimeCompatPlugin,
 }

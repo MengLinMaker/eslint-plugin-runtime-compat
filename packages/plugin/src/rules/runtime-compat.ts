@@ -4,14 +4,15 @@ import {
   preprocessCompatData,
 } from '@eslint-plugin-runtime-compat/data'
 import { ESLintUtils } from '@typescript-eslint/utils'
-import { compatErrorMessage, createRule } from './utils'
+import type { Node } from 'typescript'
+import { createRule } from './utils'
 
 /**
  * Creates a runtime-compat rule.
  * @param filterRuntimes - List of runtimes to check.
  * @returns ESLint rule.
  */
-export const runtimeCompatRule = (filterRuntimes: RuntimeName[], ruleConfig: RuleConfig) =>
+export const runtimeCompatRule = (filterRuntimes: RuntimeName[]) =>
   createRule({
     name: 'runtime-compat',
     meta: {
@@ -27,14 +28,17 @@ export const runtimeCompatRule = (filterRuntimes: RuntimeName[], ruleConfig: Rul
       const services = ESLintUtils.getParserServices(context)
       const checker = services.program.getTypeChecker()
 
-      const unsupportedApis = filterPreprocessCompatData(preprocessCompatData, filterRuntimes)
+      const runtimeCompatData = filterPreprocessCompatData(preprocessCompatData, filterRuntimes)
 
-      const reportError = <T>(node: T, unsupportesApiId: string) => {
-        const apiInfo = unsupportedApis[unsupportesApiId]
+      const reportMatchingError = (
+        node: Node,
+        apiContext: keyof typeof runtimeCompatData,
+        apiId: string,
+      ) => {
+        const apiInfo = runtimeCompatData[apiContext].get(apiId)
         if (!apiInfo) return
-        const message = compatErrorMessage(unsupportesApiId, apiInfo)
-        // @ts-expect-error using typescript-eslint
-        context.report({ node, message })
+        // @ts-expect-error
+        context.report({ node, message: `${apiContext} - ${apiInfo.error}` })
       }
 
       return {
@@ -43,8 +47,8 @@ export const runtimeCompatRule = (filterRuntimes: RuntimeName[], ruleConfig: Rul
           const classType = services.getTypeAtLocation(node)
           const className = checker.typeToString(classType)
 
-          const unsupportesApiId = JSON.stringify([className])
-          reportError(node, unsupportesApiId)
+          const apiId = JSON.stringify([className])
+          reportMatchingError(node as never, 'class', apiId)
         },
         // Check compat for class property access
         MemberExpression: (node) => {
@@ -54,8 +58,8 @@ export const runtimeCompatRule = (filterRuntimes: RuntimeName[], ruleConfig: Rul
           const propertyType = services.getTypeAtLocation(node.property)
           const propertyName = propertyType.getSymbol()?.escapedName
 
-          const unsupportesApiId = JSON.stringify([className, propertyName])
-          reportError(node, unsupportesApiId)
+          const apiId = JSON.stringify([className, propertyName])
+          reportMatchingError(node as never, 'classProperty', apiId)
         },
       }
     },

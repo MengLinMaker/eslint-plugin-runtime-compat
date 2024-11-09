@@ -1,5 +1,4 @@
 import _preprocessCompatData from './preprocessCompatData.json'
-
 import type { RuntimeName, StatusBlock } from 'runtime-compat-data'
 import { objectKeys } from './objectKeys'
 import type {
@@ -39,13 +38,6 @@ const getUnsupportedRuntimes = (
   }
   return unsupportedRuntimes
 }
-
-/**
- * Generates error message from parsed compat data.
- * @param unsupportesApiId - The API variable defined from constructor.
- * @param apiInfo - API parsed compat data.
- * @returns Error message.
- */
 
 /**
  * Generates error message from parsed compat data.

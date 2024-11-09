@@ -8,7 +8,7 @@
     "format": "biome check --write --verbose",
     "lint": "tsc --noEmit --incremental",
     "test": "vitest",
-    "build": "pnpm i runtime-compat-data@latest && ts-node preprocess.ts && tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
+    "build": "pnpm install runtime-compat-data@latest && ts-node preprocess.ts && tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {

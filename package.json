@@ -8,7 +8,9 @@
     "test": "vitest",
     "build": "turbo build",
     "clean": "rimraf packages/**/dist & rimraf .turbo packages/**/.turbo & rimraf node_modules packages/**/node_modules",
-    "knip": "knip"
+    "knip": "knip",
+    "version": "changeset version",
+    "release": "changeset publish"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.16.4",

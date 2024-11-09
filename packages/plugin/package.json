@@ -1,6 +1,6 @@
 {
   "name": "@menglinmaker/eslint-plugin-runtime-compat",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Eslint check JS runtime conpatability issues. Inspired by eslint-plugin-compat and runtime-compat-data.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,9 +18,7 @@
     "lint": "tsc --noEmit --incremental",
     "test": "vitest",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap && attw -P .",
-    "clean": "rm -rf node_modules",
-    "version": "changeset version",
-    "release": "changeset publish"
+    "clean": "rm -rf node_modules"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "8.13.0",

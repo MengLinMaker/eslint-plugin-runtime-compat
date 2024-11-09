@@ -5,13 +5,14 @@ This is an internal package that preprocesses [`runtime-compat-data`](https://gi
 - Identifies essential API information.
 - Reduces multi-level JSON to 2 level JSON.
 - Provides a filter for identifying unsupported APIs with given target runtimes.
+- Expose minimal interface.
 
 ## Auto update
 
 Building this package with `pnpm build` will:
-1. Automatically update [`runtime-compat-data`](https://github.com/unjs/runtime-compat/tree/main/packages/runtime-compat-data)
-2. Run preprocessing script to produce `preprocessCompatData.json`
-3. Finally build package
+1. Automatically update [`runtime-compat-data`](https://github.com/unjs/runtime-compat/tree/main/packages/runtime-compat-data)/.
+2. Run preprocessing script to produce `preprocessCompatData.json`.
+3. Finally build package.
 
 ## Runtime usage
 

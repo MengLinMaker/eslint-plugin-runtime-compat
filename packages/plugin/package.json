@@ -1,6 +1,6 @@
 {
   "name": "@menglinmaker/eslint-plugin-runtime-compat",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Eslint check JS runtime conpatability issues. Inspired by eslint-plugin-compat and runtime-compat-data.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

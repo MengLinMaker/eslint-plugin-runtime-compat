@@ -8,8 +8,6 @@
     "test": "vitest",
     "build": "turbo build",
     "clean": "rimraf packages/**/dist & rimraf .turbo packages/**/.turbo & rimraf node_modules packages/**/node_modules",
-    "version": "changeset version",
-    "release": "changeset publish",
     "knip": "knip"
   },
   "devDependencies": {

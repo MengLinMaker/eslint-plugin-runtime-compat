@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: latest
           cache: 'pnpm'
-      # comfig recommended by pnpm error
+      # config recommended by pnpm error
       - run: pnpm config set store-dir "/home/runner/setup-pnpm/node_modules/.bin/store/v3" --global
-      
+
       - run: pnpm install
       - run: pnpm build
       - run: pnpm lint

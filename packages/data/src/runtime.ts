@@ -1,6 +1,5 @@
 import _preprocessCompatData from './preprocessCompatData.json'
-
-import type { RuntimeName } from 'runtime-compat-data'
+import type { RuntimeName, StatusBlock } from 'runtime-compat-data'
 import { objectKeys } from './objectKeys'
 import type {
   PreprocessCompatData,
@@ -41,6 +40,28 @@ const getUnsupportedRuntimes = (
 }
 
 /**
+ * Generates error message from parsed compat data.
+ * @param keys
+ * @param url - Doc url.
+ * @param status - status block of API.
+ * @param unsupported - Unsupported runtimes.
+ * @returns Error message.
+ */
+export const errorMessage = (
+  keys: string[],
+  url: string,
+  status: StatusBlock,
+  unsupported: RuntimeName[],
+) => {
+  let apiStatus = status.standard_track ? 'standard' : ''
+  apiStatus = status.deprecated ? 'deprecated' : apiStatus
+  apiStatus = status.experimental ? 'experimental' : apiStatus
+
+  const docString = `Docs - ${url}`
+  return `[${keys}] - Unsupported ${apiStatus} API for [${unsupported}]\n${docString}`
+}
+
+/**
  * Clean flat compat data object, retaining only unsupported runtimes.
  * @param flatCompatData - Flat compat data object.
  * @param filterRuntimes - Runtimes to filter for lack of support detection.
@@ -67,10 +88,17 @@ export const filterPreprocessCompatData = (
           filterRuntimes,
         )
         if (unsupportedRuntimes.length > 0) {
+          const error = errorMessage(
+            JSON.parse(jsonKeys),
+            preprocessCompatStatement.url,
+            preprocessCompatStatement.status,
+            unsupportedRuntimes,
+          )
           parsedCompatData[context].set(jsonKeys, {
             url: preprocessCompatStatement.url,
             status: preprocessCompatStatement.status,
             unsupported: unsupportedRuntimes,
+            error,
           })
         }
       }

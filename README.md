@@ -29,7 +29,7 @@ The linter config should target the server bundle, not client.
 npm install @menglinmaker/eslint-plugin-runtime-compat
 ```
 
-2. Add `eslint.config.mjs` to root
+2. Add `eslint.config.mjs` to root. This detects incompatible APIs for all runtimes in the dataset.
 ```Bash
 import runtimeCompat from "@menglinmaker/eslint-plugin-runtime-compat";
 
@@ -38,10 +38,7 @@ export default [runtimeCompat.configs.strict];
 
 Alternatively, you can load a custom config:
 ```Bash
-export default [runtimeCompat.configs.custom(['node', 'bun', 'deno'], {
-  deprecated: true,
-  experimental: true,
-})];
+export default [runtimeCompat.configs.custom(['node', 'bun', 'deno'])];
 ```
 
 ## Limitations:

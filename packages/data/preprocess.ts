@@ -47,8 +47,8 @@ const mapCompatData = new Map<string, PreprocessCompatStatement>()
     for (const key of keys) {
       const subData = compatData[key]
       if (key === '__compat') {
-        const finalCompatStatement = extractPreprocessCompatStatement(subData as never)
-        mapCompatData.set(JSON.stringify(parentKeys), finalCompatStatement)
+        const preprocessCompatStatement = extractPreprocessCompatStatement(subData as never)
+        mapCompatData.set(JSON.stringify(parentKeys), preprocessCompatStatement)
       } else {
         // Only chain keys if "__compat" exists
         const nodeHasCompatData = !keys.includes('__compat')
@@ -73,37 +73,38 @@ const preprocessCompatData: PreprocessCompatData = {
 }
 {
   const isPascalCase = (s: string | undefined) => s?.match(/^[A-Z]+.*/)
-  for (const [jsonKeys, finalCompatStatement] of mapCompatData.entries()) {
+
+  for (const [jsonKeys, preprocessCompatStatement] of mapCompatData.entries()) {
     const keys = JSON.parse(jsonKeys) as string[]
     if (keys.length === 1) {
       if (isPascalCase(keys[0])) {
         // PascalCase, hence a class
-        preprocessCompatData.class[jsonKeys] = finalCompatStatement
+        preprocessCompatData.class[jsonKeys] = preprocessCompatStatement
       } else {
         // camelCase, hence a variable or function
-        preprocessCompatData.global[jsonKeys] = finalCompatStatement
+        preprocessCompatData.global[jsonKeys] = preprocessCompatStatement
       }
     } else if (keys.length === 2) {
       if (keys[0] === keys[1])
         // Duplicate keys are class constructors
-        preprocessCompatData.class[JSON.stringify([keys[0]])] = finalCompatStatement
+        preprocessCompatData.class[JSON.stringify([keys[0]])] = preprocessCompatStatement
       else if (keys[1]?.match('_static')) {
         // Static methods have '_static'
         const newKeys = JSON.stringify([keys[0], keys[1]?.replace('_static', '')])
         if (isPascalCase(keys[0]))
-          preprocessCompatData.classProperty[newKeys] = finalCompatStatement
-        else preprocessCompatData.globalClassProperty[newKeys] = finalCompatStatement
+          preprocessCompatData.classProperty[newKeys] = preprocessCompatStatement
+        else preprocessCompatData.globalClassProperty[newKeys] = preprocessCompatStatement
       } else if (keys[1]?.match('_event')) {
         // Events have '_event'
         const newKeys = JSON.stringify([keys[0], keys[1]?.replace('_event', '')])
-        preprocessCompatData.eventListener[newKeys] = finalCompatStatement
+        preprocessCompatData.eventListener[newKeys] = preprocessCompatStatement
       } else if (!keys[1]?.match('_'))
         // Normal class property
-        preprocessCompatData.classProperty[jsonKeys] = finalCompatStatement
-      else preprocessCompatData.misc[jsonKeys] = finalCompatStatement
+        preprocessCompatData.classProperty[jsonKeys] = preprocessCompatStatement
+      else preprocessCompatData.misc[jsonKeys] = preprocessCompatStatement
     } else {
       // Not sure how to analyse
-      preprocessCompatData.misc[JSON.stringify([keys[0]])] = finalCompatStatement
+      preprocessCompatData.misc[JSON.stringify([keys[0]])] = preprocessCompatStatement
     }
   }
 }

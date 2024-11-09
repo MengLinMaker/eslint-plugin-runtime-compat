@@ -1,9 +1,7 @@
 import {
-  type RuleConfig,
   type RuntimeName,
-  data,
-  filterSupportCompatData,
-  mapCompatData,
+  filterPreprocessCompatData,
+  preprocessCompatData,
 } from '@eslint-plugin-runtime-compat/data'
 import { ESLintUtils } from '@typescript-eslint/utils'
 import { compatErrorMessage, createRule } from './utils'
@@ -29,11 +27,7 @@ export const runtimeCompatRule = (filterRuntimes: RuntimeName[], ruleConfig: Rul
       const services = ESLintUtils.getParserServices(context)
       const checker = services.program.getTypeChecker()
 
-      const unsupportedApis = filterSupportCompatData(
-        mapCompatData(data),
-        filterRuntimes,
-        ruleConfig,
-      )
+      const unsupportedApis = filterPreprocessCompatData(preprocessCompatData, filterRuntimes)
 
       const reportError = <T>(node: T, unsupportesApiId: string) => {
         const apiInfo = unsupportedApis[unsupportesApiId]

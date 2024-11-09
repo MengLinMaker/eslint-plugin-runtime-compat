@@ -29,5 +29,6 @@ export type RuntimeCompatStatement = {
   url: string
   status: StatusBlock
   unsupported: RuntimeName[]
+  error: string
 }
 export type RuntimeCompatData = Record<ApiClassification, Map<string, RuntimeCompatStatement>>

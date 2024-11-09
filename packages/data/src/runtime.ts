@@ -1,6 +1,6 @@
-import _preprocessCompatData from './preprocessCompatData.json'
 import type { RuntimeName, StatusBlock } from 'runtime-compat-data'
 import { objectKeys } from './objectKeys'
+import _preprocessCompatData from './preprocessCompatData.json'
 import type {
   PreprocessCompatData,
   PreprocessCompatStatement,

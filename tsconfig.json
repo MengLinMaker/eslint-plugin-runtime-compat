@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "pretty": true,
     /* Module Config */
+    "target": "ESNext",
     "isolatedModules": true,
     "esModuleInterop": true,
     "module": "NodeNext",

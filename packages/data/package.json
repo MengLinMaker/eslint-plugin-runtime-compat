@@ -5,11 +5,10 @@
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "commit": "czg",
     "format": "biome check --write --verbose",
     "lint": "tsc --noEmit --incremental",
     "test": "vitest",
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
+    "build": "pnpm install runtime-compat-data@latest && ts-node preprocess.ts && tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {

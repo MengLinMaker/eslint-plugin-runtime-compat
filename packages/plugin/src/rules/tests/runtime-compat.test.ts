@@ -1,4 +1,4 @@
-import type { RuntimeName } from 'runtime-compat-data'
+import type { RuntimeName } from '@eslint-plugin-runtime-compat/data'
 import { runtimeCompatRule } from '..'
 import { ruleTester } from './setup'
 

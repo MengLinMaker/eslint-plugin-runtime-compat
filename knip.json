@@ -1,12 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "ignore": ["src/*.ts", "**/tests/setup/file.ts"],
+  "ignore": ["**/tests/setup/file.ts"],
   "ignoreBinaries": ["only-allow"],
-  "ignoreDependencies": [
-    "@changesets/changelog-github",
-    "@commitlint/cli",
-    "@commitlint/config-conventional",
-    "cz-git",
-    "@typescript-eslint/parser"
-  ]
+  "ignoreDependencies": ["@changesets/changelog-github", "@typescript-eslint/parser"]
 }

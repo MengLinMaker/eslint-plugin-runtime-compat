@@ -1,4 +1,4 @@
-import type { RuntimeName } from 'runtime-compat-data'
+import type { RuntimeName } from '@eslint-plugin-runtime-compat/data'
 
 export const supportedRuntimes: RuntimeName[] = [
   'bun',

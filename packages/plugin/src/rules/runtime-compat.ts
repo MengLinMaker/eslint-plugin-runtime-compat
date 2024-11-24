@@ -3,8 +3,7 @@ import {
   filterPreprocessCompatData,
   preprocessCompatData,
 } from '@eslint-plugin-runtime-compat/data'
-import { ESLintUtils } from '@typescript-eslint/utils'
-import type { Node } from 'typescript'
+import { ESLintUtils, type TSESTree } from '@typescript-eslint/utils'
 import { createRule } from './utils'
 
 /**
@@ -31,7 +30,7 @@ export const runtimeCompatRule = (filterRuntimes: RuntimeName[]) =>
       const runtimeCompatData = filterPreprocessCompatData(preprocessCompatData, filterRuntimes)
 
       const reportMatchingError = (
-        node: Node,
+        node: TSESTree.Expression,
         apiContext: keyof typeof runtimeCompatData,
         apiId: string,
       ) => {
@@ -48,18 +47,18 @@ export const runtimeCompatRule = (filterRuntimes: RuntimeName[]) =>
           const className = checker.typeToString(classType)
 
           const apiId = JSON.stringify([className])
-          reportMatchingError(node as never, 'class', apiId)
+          reportMatchingError(node, 'class', apiId)
         },
         // Check compat for class property access
         MemberExpression: (node) => {
           const classType = services.getTypeAtLocation(node.object)
           const className = checker.typeToString(classType)
 
-          const propertyType = services.getTypeAtLocation(node.property)
-          const propertyName = propertyType.getSymbol()?.escapedName
-
-          const apiId = JSON.stringify([className, propertyName])
-          reportMatchingError(node as never, 'classProperty', apiId)
+          const apiId = JSON.stringify([
+            className,
+            (node.property as TSESTree.PrivateIdentifier).name,
+          ])
+          reportMatchingError(node, 'classProperty', apiId)
         },
       }
     },

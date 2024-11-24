@@ -17,6 +17,7 @@
     "format": "biome check --write --verbose",
     "lint": "tsc --noEmit --incremental",
     "test": "vitest",
+    "test:dev": "vitest --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap && attw -P .",
     "clean": "rm -rf node_modules"
   },
@@ -25,10 +26,11 @@
     "@typescript-eslint/rule-tester": "8.12.2"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "8.12.2",
-    "@eslint-plugin-runtime-compat/data": "workspace:*"
+    "@eslint-plugin-runtime-compat/data": "workspace:*",
+    "@typescript-eslint/utils": "8.12.2"
   },
   "peerDependencies": {
+    "@eslint-plugin-runtime-compat/data": "workspace:*",
     "eslint": ">=9.0.0",
     "typescript": "^5.0.0"
   }

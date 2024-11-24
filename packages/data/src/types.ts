@@ -8,6 +8,8 @@ type ApiClassification =
   | 'globalClassProperty'
   | 'misc'
 
+export type JsonKeys = string
+
 /**
  * Types for preprocessing
  */

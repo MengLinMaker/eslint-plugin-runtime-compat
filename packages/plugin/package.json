@@ -17,6 +17,7 @@
     "format": "biome check --write --verbose",
     "lint": "tsc --noEmit --incremental",
     "test": "vitest",
+    "test:dev": "vitest --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap && attw -P .",
     "clean": "rm -rf node_modules"
   },

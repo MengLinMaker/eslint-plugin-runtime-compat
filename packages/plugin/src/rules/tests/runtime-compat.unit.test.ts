@@ -4,6 +4,7 @@ import {
   objectKeys,
   parseJsonKeys,
   preprocessCompatData,
+  stringifyJsonKeys,
 } from '@eslint-plugin-runtime-compat/data'
 import type { InvalidTestCase } from '@typescript-eslint/rule-tester'
 import { runtimeCompatRule } from '..'
@@ -29,7 +30,7 @@ for (const apiContext of objectKeys(runtimeCompatData)) {
       const keys = parseJsonKeys(jsonKeys)
       switch (apiContext) {
         case 'class': {
-          const testComment = `// Class instantiation: ${keys[0]}`
+          const testComment = `// Class instantiation: [${keys}]`
           const errors = [{ message: `${apiContext} - ${apiInfo.error}` }]
           invalidTests.push({
             code: `
@@ -50,26 +51,26 @@ for (const apiContext of objectKeys(runtimeCompatData)) {
           })
           break
         }
-        // case 'classProperty': {
-        //   const testComment = `// Class property: ${keys[0]}`
-        //   const errors = [{ message: `${apiContext} - ${apiInfo.error}` }]
+        case 'classProperty': {
+          const testComment = `// Class property: [${keys}]`
+          const errors = [{ message: `${apiContext} - ${apiInfo.error}` }]
 
-        //   const classApiInfo = runtimeCompatData['class'].get(stringifyJsonKeys([keys[0]!]))
-        //   if (classApiInfo) {
-        //     errors.unshift({ message: `class - ${classApiInfo?.error}` })
-        //   }
+          const classApiInfo = runtimeCompatData['class'].get(stringifyJsonKeys([keys[0]!]))
+          if (classApiInfo) {
+            errors.unshift({ message: `class - ${classApiInfo?.error}` })
+          }
 
-        //   invalidTests.push({
-        //     code: `
-        //       ${testComment}
-        //       const _classInstance = new ${keys[0]}()
-        //       const _classProperty = _classInstance.${keys[1]}
-        //     `,
-        //     // @ts-expect-error message is legacy
-        //     errors,
-        //   })
-        //   break
-        // }
+          invalidTests.push({
+            code: `
+              ${testComment}
+              const _classInstance = new ${keys[0]}()
+              const _classProperty = _classInstance.${keys[1]}
+            `,
+            // @ts-expect-error message is legacy
+            errors,
+          })
+          break
+        }
         case 'eventListener':
           break
         case 'global':

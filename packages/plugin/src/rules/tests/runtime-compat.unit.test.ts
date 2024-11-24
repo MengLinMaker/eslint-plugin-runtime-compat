@@ -28,35 +28,31 @@ for (const apiContext of objectKeys(runtimeCompatData)) {
     if (!Object.hasOwn(unsupportedApis, jsonKeys)) {
       const keys = parseJsonKeys(jsonKeys)
       switch (apiContext) {
-        case 'class':
+        case 'class': {
+          const testComment = `// Class instantiation: ${keys[0]}`
+          const errors = [{ message: `${apiContext} - ${apiInfo.error}` }]
           invalidTests.push({
             code: `
-            // Class instantiation: ${keys[0]}
-            const _ClassName = ${keys[0]}
-            const _classInstance = new _ClassName()
-          `,
-            errors: [
-              {
-                // @ts-expect-error message is legacy
-                message: `${apiContext} - ${apiInfo.error}`,
-              },
-            ],
+              ${testComment}
+              const _ClassName = ${keys[0]}
+              const _classInstance = new _ClassName()
+            `,
+            // @ts-expect-error message is legacy
+            errors,
           })
           invalidTests.push({
             code: `
-            // Class instantiation: ${keys[0]}
-            const _classInstance = new ${keys[0]}()
-          `,
-            errors: [
-              {
-                // @ts-expect-error message is legacy
-                message: `${apiContext} - ${apiInfo.error}`,
-              },
-            ],
+              ${testComment}
+              const _classInstance = new ${keys[0]}()
+            `,
+            // @ts-expect-error message is legacy
+            errors,
           })
           break
-        case 'classProperty':
+        }
+        case 'classProperty': {
           break
+        }
         case 'eventListener':
           break
         case 'global':

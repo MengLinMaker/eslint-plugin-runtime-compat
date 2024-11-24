@@ -1,7 +1,7 @@
 import type { RuntimeName } from 'runtime-compat-data'
 import { describe, expect, it } from 'vitest'
-import { objectKeys } from '../objectKeys'
 import { filterPreprocessCompatData, preprocessCompatData } from '../runtime'
+import { objectKeys } from '../utils'
 
 describe('filterPreprocessCompatData', () => {
   const filterRuntimes: RuntimeName[] = ['node']

@@ -2,6 +2,7 @@ import { writeFileSync } from 'node:fs'
 import type { CompatStatement, Identifier, StatusBlock } from 'runtime-compat-data'
 import rawCompatData from 'runtime-compat-data'
 import type { PreprocessCompatData, PreprocessCompatStatement } from './src/types'
+import { parseJsonKeys, stringifyJsonKeys } from './src/utils'
 
 /**
  * Compress raw compat data to single level flatmap
@@ -48,7 +49,7 @@ const mapCompatData = new Map<string, PreprocessCompatStatement>()
       const subData = compatData[key]
       if (key === '__compat') {
         const preprocessCompatStatement = extractPreprocessCompatStatement(subData as never)
-        mapCompatData.set(JSON.stringify(parentKeys), preprocessCompatStatement)
+        mapCompatData.set(stringifyJsonKeys(parentKeys), preprocessCompatStatement)
       } else {
         // Only chain keys if "__compat" exists
         const nodeHasCompatData = !keys.includes('__compat')
@@ -61,7 +62,7 @@ const mapCompatData = new Map<string, PreprocessCompatStatement>()
 }
 
 /**
- * Sort mapped compat data into different AST detection scenarios
+ * Sort mapped compat data into different AST detection apiContext
  */
 const preprocessCompatData: PreprocessCompatData = {
   class: {},
@@ -75,7 +76,7 @@ const preprocessCompatData: PreprocessCompatData = {
   const isPascalCase = (s: string | undefined) => s?.match(/^[A-Z]+.*/)
 
   for (const [jsonKeys, preprocessCompatStatement] of mapCompatData.entries()) {
-    const keys = JSON.parse(jsonKeys) as string[]
+    const keys = parseJsonKeys(jsonKeys)
     if (keys.length === 1) {
       if (isPascalCase(keys[0])) {
         // PascalCase, hence a class
@@ -87,16 +88,16 @@ const preprocessCompatData: PreprocessCompatData = {
     } else if (keys.length === 2) {
       if (keys[0] === keys[1])
         // Duplicate keys are class constructors
-        preprocessCompatData.class[JSON.stringify([keys[0]])] = preprocessCompatStatement
+        preprocessCompatData.class[stringifyJsonKeys([keys[0]!])] = preprocessCompatStatement
       else if (keys[1]?.match('_static')) {
         // Static methods have '_static'
-        const newKeys = JSON.stringify([keys[0], keys[1]?.replace('_static', '')])
+        const newKeys = stringifyJsonKeys([keys[0]!, keys[1]?.replace('_static', '')])
         if (isPascalCase(keys[0]))
           preprocessCompatData.classProperty[newKeys] = preprocessCompatStatement
         else preprocessCompatData.globalClassProperty[newKeys] = preprocessCompatStatement
       } else if (keys[1]?.match('_event')) {
         // Events have '_event'
-        const newKeys = JSON.stringify([keys[0], keys[1]?.replace('_event', '')])
+        const newKeys = stringifyJsonKeys([keys[0]!, keys[1]?.replace('_event', '')])
         preprocessCompatData.eventListener[newKeys] = preprocessCompatStatement
       } else if (!keys[1]?.match('_'))
         // Normal class property
@@ -104,7 +105,7 @@ const preprocessCompatData: PreprocessCompatData = {
       else preprocessCompatData.misc[jsonKeys] = preprocessCompatStatement
     } else {
       // Not sure how to analyse
-      preprocessCompatData.misc[JSON.stringify([keys[0]])] = preprocessCompatStatement
+      preprocessCompatData.misc[stringifyJsonKeys([keys[0]!])] = preprocessCompatStatement
     }
   }
 }

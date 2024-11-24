@@ -1,5 +1,4 @@
 import type { RuntimeName, StatusBlock } from 'runtime-compat-data'
-import { objectKeys } from './objectKeys'
 import _preprocessCompatData from './preprocessCompatData.json'
 import type {
   PreprocessCompatData,
@@ -7,6 +6,7 @@ import type {
   RuntimeCompatData,
   RuntimeCompatStatement,
 } from './types.js'
+import { objectKeys } from './utils'
 
 const preprocessCompatData: PreprocessCompatData = _preprocessCompatData
 export { preprocessCompatData }

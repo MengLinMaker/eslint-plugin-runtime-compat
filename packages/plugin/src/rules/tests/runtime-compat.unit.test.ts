@@ -50,9 +50,26 @@ for (const apiContext of objectKeys(runtimeCompatData)) {
           })
           break
         }
-        case 'classProperty': {
-          break
-        }
+        // case 'classProperty': {
+        //   const testComment = `// Class property: ${keys[0]}`
+        //   const errors = [{ message: `${apiContext} - ${apiInfo.error}` }]
+
+        //   const classApiInfo = runtimeCompatData['class'].get(stringifyJsonKeys([keys[0]!]))
+        //   if (classApiInfo) {
+        //     errors.unshift({ message: `class - ${classApiInfo?.error}` })
+        //   }
+
+        //   invalidTests.push({
+        //     code: `
+        //       ${testComment}
+        //       const _classInstance = new ${keys[0]}()
+        //       const _classProperty = _classInstance.${keys[1]}
+        //     `,
+        //     // @ts-expect-error message is legacy
+        //     errors,
+        //   })
+        //   break
+        // }
         case 'eventListener':
           break
         case 'global':

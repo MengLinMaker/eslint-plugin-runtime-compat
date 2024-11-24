@@ -1,9 +1,6 @@
 {
   "[\"CustomEvent\"]": "",
   "[\"GPUDeviceLostInfo\"]": "",
-  "[\"GPUInternalError\"]": "",
-  "[\"GPUOutOfMemoryError\"]": "",
-  "[\"GPUValidationError\"]": "",
   "[\"MessageEvent\"]": "",
   "[\"ProgressEvent\"]": "",
   "[\"ReadableStream\"]": "",

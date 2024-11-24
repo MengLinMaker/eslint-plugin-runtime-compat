@@ -14,5 +14,11 @@
   },
   "dependencies": {
     "runtime-compat-data": "0.0.5"
+  },
+  "peerDependencies": {
+    "@cloudflare/workers-types": "*",
+    "@types/bun": "*",
+    "@types/deno": "*",
+    "@types/node": "*"
   }
 }

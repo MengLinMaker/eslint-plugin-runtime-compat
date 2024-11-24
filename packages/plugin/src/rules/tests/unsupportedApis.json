@@ -1,0 +1,16 @@
+{
+  "[\"CustomEvent\"]": "",
+  "[\"GPUDeviceLostInfo\"]": "",
+  "[\"GPUInternalError\"]": "",
+  "[\"GPUOutOfMemoryError\"]": "",
+  "[\"GPUValidationError\"]": "",
+  "[\"MessageEvent\"]": "",
+  "[\"ProgressEvent\"]": "",
+  "[\"ReadableStream\"]": "",
+  "[\"ReadableStreamDefaultReader\"]": "",
+  "[\"TransformStream\"]": "",
+  "[\"TransformStreamDefaultController\"]": "",
+  "[\"URLPattern\"]": "",
+  "[\"WritableStream\"]": "",
+  "[\"WritableStreamDefaultWriter\"]": ""
+}

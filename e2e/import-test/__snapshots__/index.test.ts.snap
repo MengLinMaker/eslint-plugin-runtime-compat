@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Multi file import linting test > should detect [Cache] incompatability 1`] = `
+"
+> @ test:lint /Users/menglinmaker/Documents/2-Engineering/OpenSource/eslint-runtime-compat/e2e/import-test
+> eslint
+
+
+/Users/menglinmaker/Documents/2-Engineering/OpenSource/eslint-runtime-compat/e2e/import-test/index.ts
+  6:5  error  class - [Cache] - Unsupported standard API for [bun,edge-light,fastly,node]
+Docs - https://developer.mozilla.org/docs/Web/API/Cache  runtime-compat/runtime-compat
+
+✖ 1 problem (1 error, 0 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.
+"
+`;

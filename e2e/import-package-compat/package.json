@@ -1,4 +1,5 @@
 {
+  "name": "@eslint-plugin-runtime-compat/import-package-compat",
   "private": true,
   "type": "module",
   "scripts": {

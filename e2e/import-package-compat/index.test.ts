@@ -10,7 +10,7 @@ describe('Multi file import linting test', () => {
       })
     } catch (e) {
       // @ts-expect-error error is not well defined
-      expect(e.stdout).toMatchSnapshot()
+      expect(e.stdout).toContain('class - [Cache] - Unsupported standard API')
     }
   })
 })

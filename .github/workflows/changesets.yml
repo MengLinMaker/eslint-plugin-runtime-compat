@@ -1,11 +1,8 @@
-name: CD
+name: Changesets
 on:
-  workflow_run:
-    workflows: [CI]
-    branches: [main]
-    types: [completed]
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -14,7 +11,6 @@ permissions:
 
 jobs:
   release:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,15 +24,16 @@ jobs:
 
       - run: pnpm install
       - run: pnpm build
+      - run: pnpm lint
+      - run: pnpm test
 
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
+      - name: Update and publish versions
         uses: changesets/action@v1
         with:
-          publish: pnpm release
           version: pnpm run version
           commit: "chore: new release"
           title: "chore: new release candidate"
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

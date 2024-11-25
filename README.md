@@ -32,15 +32,16 @@ npm install @menglinmaker/eslint-plugin-runtime-compat
 ```
 
 2. Add `eslint.config.mjs` to root. This detects incompatible APIs for all runtimes in the dataset.
-```Bash
-import runtimeCompat from "@menglinmaker/eslint-plugin-runtime-compat";
+```JavaScript
+import runtimeCompat from '@menglinmaker/eslint-plugin-runtime-compat'
+import tseslint from 'typescript-eslint'
 
-export default [runtimeCompat.configs.strict];
+export default [...tseslint.configs.recommended, ...runtimeCompat.configs.strict]
 ```
 
 Alternatively, you can load a custom config:
-```Bash
-export default [runtimeCompat.configs.custom(['node', 'bun', 'deno'])];
+```JavaScript
+runtimeCompat.configs.custom(['node', 'bun', 'deno'])
 ```
 
 ## Limitations:

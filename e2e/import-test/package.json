@@ -1,7 +1,9 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "test": "vitest",
+    "test:dev": "vitest --watch",
     "test:lint": "eslint"
   },
   "devDependencies": {

@@ -1,6 +1,5 @@
 {
   "name": "@eslint-plugin-runtime-compat/internal-package-compat",
-
   "private": true,
   "type": "module",
   "scripts": {

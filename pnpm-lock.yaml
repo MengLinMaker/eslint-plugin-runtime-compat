@@ -47,7 +47,23 @@ importers:
 
   e2e/dummy-dependency: {}
 
-  e2e/import-test:
+  e2e/import-package-compat:
+    dependencies:
+      '@eslint-plugin-runtime-compat/dummy-dependency':
+        specifier: workspace:*
+        version: link:../dummy-dependency
+    devDependencies:
+      '@menglinmaker/eslint-plugin-runtime-compat':
+        specifier: workspace:*
+        version: link:../../packages/plugin
+      eslint:
+        specifier: 9.15.0
+        version: 9.15.0(jiti@2.4.0)
+      typescript-eslint:
+        specifier: 8.15.0
+        version: 8.15.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.6.3)
+
+  e2e/internal-package-compat:
     dependencies:
       '@eslint-plugin-runtime-compat/dummy-dependency':
         specifier: workspace:*

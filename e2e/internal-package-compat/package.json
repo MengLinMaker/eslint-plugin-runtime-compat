@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "biome check --write --verbose",
+    "test": "vitest",
+    "test:dev": "vitest --watch",
+    "test:lint": "eslint",
+    "clean": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "@eslint-plugin-runtime-compat/dummy-dependency": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "9.15.0",
+    "typescript-eslint": "8.15.0",
+    "@menglinmaker/eslint-plugin-runtime-compat": "workspace:*"
+  }
+}

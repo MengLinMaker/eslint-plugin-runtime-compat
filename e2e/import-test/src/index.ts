@@ -1,4 +1,4 @@
-import { _Cache } from './utils'
+import { _Cache } from '@eslint-plugin-runtime-compat/dummy-dependency'
 
 Promise.all([
   async () => {

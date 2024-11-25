@@ -47,7 +47,7 @@ const getUnsupportedRuntimes = (
  * @param unsupported - Unsupported runtimes.
  * @returns Error message.
  */
-export const errorMessage = (
+const errorMessage = (
   keys: string[],
   url: string,
   status: StatusBlock,

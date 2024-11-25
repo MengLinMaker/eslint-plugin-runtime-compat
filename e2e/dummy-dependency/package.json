@@ -1,0 +1,13 @@
+{
+  "name": "@eslint-plugin-runtime-compat/dummy-dependency",
+  "version": "0.0.0",
+  "private": "true",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "format": "biome check --write --verbose",
+    "build": "tsup index.ts --format cjs,esm --dts --clean --sourcemap",
+    "clean": "rm -rf node_modules"
+  }
+}

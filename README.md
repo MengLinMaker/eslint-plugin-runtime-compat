@@ -12,11 +12,13 @@
 &nbsp;
 
 ## Features:
+- [x] Track compat issues across multiple imports and packages
 - [x] Configure range of providers according to [runtime-compat](https://runtime-compat.unjs.io/)
 - [x] Detect incompatible class instantiations
 - [x] Detect incompatible class property access
 - [ ] Disable rules
 - [ ] Detect incompatible event listeners
+- [ ] Detect compat issues hidden within packages
 
 **Note: Project is in alpha. API may change**
 
@@ -42,7 +44,6 @@ export default [runtimeCompat.configs.custom(['node', 'bun', 'deno'])];
 ```
 
 ## Limitations:
-- Does not [lint across multiple files](https://github.com/eslint/eslint/discussions/15388#discussioncomment-1747795) since ESLint only analyses each file in isolation by building an AST for each file.
 - Cannot detect when globals are overridden
 
 ## Attibution
